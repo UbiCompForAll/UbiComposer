@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<descriptor:DescriptorLibrary xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:descriptor="http://www.ubicompforall.org/descriptor" name="Communication" userFriendlyName="Communication Library" description="Building blocks for communication">
+  <buildingBlocks xsi:type="descriptor:TriggerDesc" name="SMSReceived" userFriendlyName="SMS Received" description="Triggered when an SMS message is received" iconUrl="technorati.png">
+    <parameters name="phoneNumber" userFriendlyName="Phone Number" description="The phone number from which the SMS was sent">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </parameters>
+    <parameters name="message" userFriendlyName="Message" description="The text of the SMS message">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </parameters>
+  </buildingBlocks>
+  <buildingBlocks xsi:type="descriptor:TriggerDesc" name="IncommingCall" userFriendlyName="Incomming Phone Call" description="Triggered when a phone call is incomming" iconUrl="phone.png">
+    <parameters name="phoneNumber" userFriendlyName="Phone Number" description="The number of the phone calling  ">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </parameters>
+  </buildingBlocks>
+  <buildingBlocks xsi:type="descriptor:StepDesc" name="SendSMS" userFriendlyName="Send SMS" description="Send an SMS message" iconUrl="technorati.png">
+    <properties name="phoneNumber" userFriendlyName="Phone Number" description="Phone number to send the SMS message to">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </properties>
+    <properties name="message" userFriendlyName="Message" description="The text message to send as SMS">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </properties>
+  </buildingBlocks>
+  <buildingBlocks xsi:type="descriptor:StepDesc" name="sendMail" userFriendlyName="Send Mail" description="Send a mail message" iconUrl="email_go.png">
+    <properties name="mailAddress" userFriendlyName="Mail Address" description="The address to send the mail to">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </properties>
+    <properties name="subject" userFriendlyName="Subject" description="The title subject of the message">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </properties>
+    <properties name="message" userFriendlyName="Message" description="The text message to send as mail">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </properties>
+  </buildingBlocks>
+  <buildingBlocks xsi:type="descriptor:StepDesc" name="Example" userFriendlyName="Example Step" description="This is just an example" iconUrl="location_pin.png">
+    <properties name="theBool" userFriendlyName="A boolean" description="A boolean example property">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.2"/>
+    </properties>
+    <properties name="theNumber" userFriendlyName="The number property" description="An integer example">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.0"/>
+    </properties>
+    <properties name="theDate" userFriendlyName="The Date Property" description="A date property example">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.3"/>
+    </properties>
+    <properties name="theString" userFriendlyName="The String property" description="A String property example">
+      <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
+    </properties>
+  </buildingBlocks>
+</descriptor:DescriptorLibrary>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/buildingBlockIconView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_width="32dp"
+        android:layout_height="32dp"       
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/buildingBlockNameText"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_toRightOf="@+id/buildingBlockIconView"       
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMediumInverse" />
+
+</RelativeLayout>

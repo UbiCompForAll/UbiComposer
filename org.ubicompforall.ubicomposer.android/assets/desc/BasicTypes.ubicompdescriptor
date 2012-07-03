@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<descriptor:DescriptorLibrary xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:descriptor="http://www.ubicompforall.org/descriptor" name="BasicTypes" userFriendlyName="Standard types" description="Library of basic types">
+  <buildingBlocks xsi:type="descriptor:DataType" name="Integer" userFriendlyName="Integer" description="A whole number (i.e. with no decimal places) that can be positive, negative, or zero"/>
+  <buildingBlocks xsi:type="descriptor:DataType" name="String" userFriendlyName="Text" description="A text (with no formating)"/>
+  <buildingBlocks xsi:type="descriptor:DataType" name="Boolean" userFriendlyName="Boolean" description="Can be either true or false"/>
+  <buildingBlocks xsi:type="descriptor:DataType" name="Date" userFriendlyName="Time" description="A point in time including date and time of day "/>
+  <buildingBlocks xsi:type="descriptor:DataType" name="Float" userFriendlyName="Floating point number" description="A number that contain floating decimal points"/>
+</descriptor:DescriptorLibrary>

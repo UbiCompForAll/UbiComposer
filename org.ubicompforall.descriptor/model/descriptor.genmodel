@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="UbiCompForAll"
+    modelDirectory="/org.ubicompforall.descriptor.impl/src" editDirectory="/org.ubicompforall.descriptor.edit/src"
+    editorDirectory="/org.ubicompforall.descriptor.editor/src" modelPluginID="org.ubicompforall.descriptor"
+    modelName="UbiCompDescriptor" testsDirectory="/org.ubicompforall.descriptor.tests/src"
+    booleanFlagsField="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0"
+    copyrightFields="false" language="EN">
+  <foreignModel>descriptor.ecore</foreignModel>
+  <genPackages prefix="UbiCompDescriptor" basePackage="org.ubicompforall" disposableProviderFactory="true"
+      ecorePackage="descriptor.ecore#/">
+    <genClasses ecoreClass="descriptor.ecore#//DescriptorLibrary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference descriptor.ecore#//DescriptorLibrary/buildingBlocks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference descriptor.ecore#//DescriptorLibrary/conditions"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//TriggerDesc">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference descriptor.ecore#//TriggerDesc/containedConditions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference descriptor.ecore#//TriggerDesc/parameters"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//ConditionDesc">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//ConditionDesc/conceptRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//ConditionDesc/propertyRef"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//ConditionDesc/value"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//ConditionalStepDesc">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference descriptor.ecore#//ConditionalStepDesc/dependingConditions"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//DomObjRefDesc"/>
+    <genClasses ecoreClass="descriptor.ecore#//QueryDesc"/>
+    <genClasses image="false" ecoreClass="descriptor.ecore#//BuildingBlockDesc">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference descriptor.ecore#//BuildingBlockDesc/properties"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//BuildingBlockDesc/iconUrl"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//Property">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//Property/canReferToOther"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//Property/canBeReferedTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//Property/isResultValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference descriptor.ecore#//Property/allowedValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference descriptor.ecore#//Property/dataType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//Property/lowerBound"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//Property/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//Value">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//Value/name"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//StepDesc"/>
+    <genClasses image="false" ecoreClass="descriptor.ecore#//Classifier"/>
+    <genClasses ecoreClass="descriptor.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//NamedElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//NamedElement/userFriendlyName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute descriptor.ecore#//NamedElement/description"/>
+    </genClasses>
+    <genClasses ecoreClass="descriptor.ecore#//DataType"/>
+  </genPackages>
+</genmodel:GenModel>

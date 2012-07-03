@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Descriptor Model
+Bundle-SymbolicName: org.ubicompforall.descriptor
+Bundle-Version: 1.0.0
+Require-Bundle: org.eclipse.emf.ecore

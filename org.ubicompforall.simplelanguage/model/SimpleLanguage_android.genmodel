@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.ubicompforall.simplelanguage.android/src"
+    modelPluginID="" modelName="SimpleLanguage" updateClasspath="false" importerID="org.eclipse.emf.importer.ecore"
+    bundleManifest="false" complianceLevel="6.0" copyrightFields="false" runtimeVersion="2.6"
+    usedGenPackages="../../org.ubicompforall.descriptor/model/descriptor.genmodel#//descriptor">
+  <foreignModel>SimpleLanguage.ecore</foreignModel>
+  <genPackages prefix="SimpleLanguage" basePackage="org.ubicompforall" disposableProviderFactory="true"
+      ecorePackage="SimpleLanguage.ecore#/">
+    <genClasses ecoreClass="SimpleLanguage.ecore#//Step">
+      <genOperations ecoreOperation="SimpleLanguage.ecore#//Step/perform"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//Trigger">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//Trigger/conditions"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//ConditionalStep">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//ConditionalStep/stepSequence"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//ConditionalStep/conditions"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//Task">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//Task/infoObjects"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//Task/trigger"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//Task/stepSequence"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//Task/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//Task/active"/>
+      <genOperations ecoreOperation="SimpleLanguage.ecore#//Task/perform"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//Query">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//Query/result"/>
+      <genOperations ecoreOperation="SimpleLanguage.ecore#//Query/perform"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//PropertyReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//PropertyReference/fromObject"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//PropertyReference/fromProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//InformationObject"/>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//Condition">
+      <genOperations ecoreOperation="SimpleLanguage.ecore#//Condition/check"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="SimpleLanguage.ecore#//BuildingBlock">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//BuildingBlock/descriptor"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//BuildingBlock/propertyValues"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//BuildingBlock/name"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//DomainObjectReference"/>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//PropertyAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//PropertyAssignment/property"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//PropertyAssignment/value"/>
+    </genClasses>
+    <genClasses ecoreClass="SimpleLanguage.ecore#//UserService">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//UserService/tasks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SimpleLanguage.ecore#//UserService/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference SimpleLanguage.ecore#//UserService/libraries"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

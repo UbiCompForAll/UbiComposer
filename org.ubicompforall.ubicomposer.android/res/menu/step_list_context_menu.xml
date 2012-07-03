@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/edit_step" android:title="Edit"></item>
+    <item android:id="@+id/remove_step" android:title="Remove"></item>
+    <item android:id="@+id/move_step_up" android:title="Move up"></item>
+    <item android:id="@+id/move_step_down" android:title="Move down"></item>
+    
+
+</menu>
