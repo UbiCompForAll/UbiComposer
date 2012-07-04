@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="descriptor"
-    nsURI="http://www.ubicompforall.org/descriptor" nsPrefix="descriptor">
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="descriptor" nsURI="http://www.ubicompforall.org/descriptor"
+    nsPrefix="descriptor">
   <eClassifiers xsi:type="ecore:EClass" name="DescriptorLibrary" eSuperTypes="#//NamedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="buildingBlocks" upperBound="-1"
         eType="#//Classifier" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TriggerDesc" eSuperTypes="#//BuildingBlockDesc">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
-        eType="#//Property" containment="true"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TriggerDesc" eSuperTypes="#//BuildingBlockDesc"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionDesc" eSuperTypes="#//BuildingBlockDesc"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalStepDesc" eSuperTypes="#//StepDesc"/>
   <eClassifiers xsi:type="ecore:EClass" name="DomObjRefDesc" eSuperTypes="#//BuildingBlockDesc"/>

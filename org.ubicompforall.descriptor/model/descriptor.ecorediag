@@ -327,20 +327,6 @@
     <element xsi:nil="true"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_7N1Sc7FcEeCpG9DEDLpTdw" points="[-15, -20, 22, 79]$[-15, -79, 22, 20]"/>
   </edges>
-  <edges xmi:type="notation:Edge" xmi:id="_5_UBIF7EEeGFtc9DjHuM9g" type="3002" source="_97-D0IcDEeCEGfhAOR_1LA" target="_vYao4IcFEeCEGfhAOR_1LA">
-    <children xmi:type="notation:Node" xmi:id="_5_VPQF7EEeGFtc9DjHuM9g" type="4011">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_5_VPQV7EEeGFtc9DjHuM9g" x="-20" y="14"/>
-    </children>
-    <children xmi:type="notation:Node" xmi:id="_5_V2UF7EEeGFtc9DjHuM9g" type="4012">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_5_V2UV7EEeGFtc9DjHuM9g" x="-11" y="-13"/>
-    </children>
-    <styles xmi:type="notation:ConnectorStyle" xmi:id="_5_UBIV7EEeGFtc9DjHuM9g" lineColor="4210752"/>
-    <styles xmi:type="notation:FontStyle" xmi:id="_5_UBIl7EEeGFtc9DjHuM9g" fontColor="4210752" fontName="Lucida Grande" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="descriptor.ecore#//TriggerDesc/parameters"/>
-    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_5_UBI17EEeGFtc9DjHuM9g" points="[2, 10, -99, -70]$[19, 80, -82, 0]$[100, 80, -1, 0]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_5_Y5oF7EEeGFtc9DjHuM9g" id="(0.8029197080291971,0.7551020408163265)"/>
-    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_JBJaYYSdEeGnRP2DErcIOw" id="(0.011976047904191617,0.5925925925925926)"/>
-  </edges>
   <edges xmi:type="notation:Edge" xmi:id="_mJX0oF7IEeGFtc9DjHuM9g" type="3003" source="_kgGwwF7IEeGFtc9DjHuM9g" target="_sUcMkF7EEeGFtc9DjHuM9g">
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_mJX0oV7IEeGFtc9DjHuM9g" routing="Rectilinear" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_mJX0ol7IEeGFtc9DjHuM9g" fontName="Lucida Grande"/>
