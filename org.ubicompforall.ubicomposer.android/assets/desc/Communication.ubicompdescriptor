@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <descriptor:DescriptorLibrary xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:descriptor="http://www.ubicompforall.org/descriptor" name="Communication" userFriendlyName="Communication Library" description="Building blocks for communication">
   <buildingBlocks xsi:type="descriptor:TriggerDesc" name="SMSReceived" userFriendlyName="SMS Received" description="Triggered when an SMS message is received" iconUrl="technorati.png">
-    <parameters name="phoneNumber" userFriendlyName="Phone Number" description="The phone number from which the SMS was sent">
+    <properties name="phoneNumber" userFriendlyName="Phone Number" description="The phone number from which the SMS was sent" isResultValue="true">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
-    </parameters>
-    <parameters name="message" userFriendlyName="Message" description="The text of the SMS message">
+    </properties>
+    <properties name="message" userFriendlyName="Message" description="The text of the SMS message" isResultValue="true">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
-    </parameters>
+    </properties>
   </buildingBlocks>
   <buildingBlocks xsi:type="descriptor:TriggerDesc" name="IncommingCall" userFriendlyName="Incomming Phone Call" description="Triggered when a phone call is incomming" iconUrl="phone.png">
-    <parameters name="phoneNumber" userFriendlyName="Phone Number" description="The number of the phone calling  ">
+    <properties name="phoneNumber" userFriendlyName="Phone Number" description="The number of the phone calling  " isResultValue="true">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
-    </parameters>
+    </properties>
   </buildingBlocks>
   <buildingBlocks xsi:type="descriptor:StepDesc" name="SendSMS" userFriendlyName="Send SMS" description="Send an SMS message" iconUrl="technorati.png">
     <properties name="phoneNumber" userFriendlyName="Phone Number" description="Phone number to send the SMS message to">

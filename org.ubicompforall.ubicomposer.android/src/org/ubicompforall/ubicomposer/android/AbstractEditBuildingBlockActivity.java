@@ -385,9 +385,7 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	
 	private void addPropertiesOfType(BuildingBlock bb, String typeName, List<BuildingBlockAndProperty> list) {
 		for (Property prop : bb.getDescriptor().getProperties()) {
-			if ((typeName == null) || (typeName.equals(prop.getDataType().getName()))) {
-				
-				//TODO: Add filter on result values
+			if (prop.isCanBeReferedTo() && (typeName == null) || (typeName.equals(prop.getDataType().getName()))) {				
 				list.add(new BuildingBlockAndProperty(bb, prop));
 			}
 		}
@@ -416,10 +414,10 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 			addPropertiesOfType(info, propertyType, bbPropertyList);		
 		}
 		
-		// Add parameters of triggers
+		// Add result values (parameters) of triggers
 		if (task.getTrigger() != null) {
-			for (Property prop : ((TriggerDesc)(task.getTrigger().getDescriptor())).getParameters()) {
-				if ((propertyType == null) || (propertyType.equals(prop.getDataType().getName()))) {
+			for (Property prop : ((TriggerDesc)(task.getTrigger().getDescriptor())).getProperties()) {
+				if (prop.isIsResultValue()  && prop.isCanBeReferedTo() && (propertyType != null) &&(propertyType.equals(prop.getDataType().getName()))) {
 					bbPropertyList.add(new BuildingBlockAndProperty(task.getTrigger(), prop));
 				}
 			}
