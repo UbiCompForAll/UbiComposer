@@ -323,22 +323,13 @@ public interface UbiCompDescriptorPackage extends EPackage {
 	int TRIGGER_DESC__ICON_URL = BUILDING_BLOCK_DESC__ICON_URL;
 
 	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TRIGGER_DESC__PARAMETERS = BUILDING_BLOCK_DESC_FEATURE_COUNT + 0;
-
-	/**
 	 * The number of structural features of the '<em>Trigger Desc</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TRIGGER_DESC_FEATURE_COUNT = BUILDING_BLOCK_DESC_FEATURE_COUNT + 1;
+	int TRIGGER_DESC_FEATURE_COUNT = BUILDING_BLOCK_DESC_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.ubicompforall.descriptor.impl.ConditionDescImpl <em>Condition Desc</em>}' class.
@@ -876,17 +867,6 @@ public interface UbiCompDescriptorPackage extends EPackage {
 	EClass getTriggerDesc();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.ubicompforall.descriptor.TriggerDesc#getParameters <em>Parameters</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Parameters</em>'.
-	 * @see org.ubicompforall.descriptor.TriggerDesc#getParameters()
-	 * @see #getTriggerDesc()
-	 * @generated
-	 */
-	EReference getTriggerDesc_Parameters();
-
-	/**
 	 * Returns the meta object for class '{@link org.ubicompforall.descriptor.ConditionDesc <em>Condition Desc</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1188,14 +1168,6 @@ public interface UbiCompDescriptorPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TRIGGER_DESC = eINSTANCE.getTriggerDesc();
-
-		/**
-		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TRIGGER_DESC__PARAMETERS = eINSTANCE.getTriggerDesc_Parameters();
 
 		/**
 		 * The meta object literal for the '{@link org.ubicompforall.descriptor.impl.ConditionDescImpl <em>Condition Desc</em>}' class.

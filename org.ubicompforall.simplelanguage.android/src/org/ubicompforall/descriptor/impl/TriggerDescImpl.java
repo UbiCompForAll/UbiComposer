@@ -24,25 +24,11 @@ import org.ubicompforall.descriptor.UbiCompDescriptorPackage;
  * An implementation of the model object '<em><b>Trigger Desc</b></em>'.
  * <!-- end-user-doc -->
  * <p>
- * The following features are implemented:
- * <ul>
- *   <li>{@link org.ubicompforall.descriptor.impl.TriggerDescImpl#getParameters <em>Parameters</em>}</li>
- * </ul>
  * </p>
  *
  * @generated
  */
 public class TriggerDescImpl extends BuildingBlockDescImpl implements TriggerDesc {
-	/**
-	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getParameters()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Property> parameters;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -60,92 +46,6 @@ public class TriggerDescImpl extends BuildingBlockDescImpl implements TriggerDes
 	@Override
 	protected EClass eStaticClass() {
 		return UbiCompDescriptorPackage.Literals.TRIGGER_DESC;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EList<Property> getParameters() {
-		if (parameters == null) {
-			parameters = new EObjectContainmentEList<Property>(Property.class, this, UbiCompDescriptorPackage.TRIGGER_DESC__PARAMETERS);
-		}
-		return parameters;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case UbiCompDescriptorPackage.TRIGGER_DESC__PARAMETERS:
-				return ((InternalEList<?>)getParameters()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case UbiCompDescriptorPackage.TRIGGER_DESC__PARAMETERS:
-				return getParameters();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case UbiCompDescriptorPackage.TRIGGER_DESC__PARAMETERS:
-				getParameters().clear();
-				getParameters().addAll((Collection<? extends Property>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void eUnset(int featureID) {
-		switch (featureID) {
-			case UbiCompDescriptorPackage.TRIGGER_DESC__PARAMETERS:
-				getParameters().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case UbiCompDescriptorPackage.TRIGGER_DESC__PARAMETERS:
-				return parameters != null && !parameters.isEmpty();
-		}
-		return super.eIsSet(featureID);
 	}
 
 } //TriggerDescImpl

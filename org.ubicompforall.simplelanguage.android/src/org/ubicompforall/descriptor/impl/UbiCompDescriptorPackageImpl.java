@@ -217,15 +217,6 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTriggerDesc_Parameters() {
-		return (EReference)triggerDescEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getConditionDesc() {
 		return conditionDescEClass;
 	}
@@ -469,7 +460,6 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 		createEReference(descriptorLibraryEClass, DESCRIPTOR_LIBRARY__BUILDING_BLOCKS);
 
 		triggerDescEClass = createEClass(TRIGGER_DESC);
-		createEReference(triggerDescEClass, TRIGGER_DESC__PARAMETERS);
 
 		conditionDescEClass = createEClass(CONDITION_DESC);
 
@@ -552,7 +542,6 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 		initEReference(getDescriptorLibrary_BuildingBlocks(), this.getClassifier(), null, "buildingBlocks", null, 0, -1, DescriptorLibrary.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(triggerDescEClass, TriggerDesc.class, "TriggerDesc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTriggerDesc_Parameters(), this.getProperty(), null, "parameters", null, 0, -1, TriggerDesc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(conditionDescEClass, ConditionDesc.class, "ConditionDesc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
