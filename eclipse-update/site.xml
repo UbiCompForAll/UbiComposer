@@ -1,4 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.ubicompforall.ubicomppro.feature_0.1.0.201207041831.jar" id="org.ubicompforall.ubicomppro.feature" version="0.1.0.201207041831"/>
+   <feature url="features/org.ubicompforall.ubicomppro.feature_0.2.0.jar" id="org.ubicompforall.ubicomppro.feature" version="0.2.0">
+      <category name="UbiCompForAll"/>
+   </feature>
+   <category-def name="UbiCompForAll" label="UbiCompForAll Tools">
+      <description>
+         Eclipse-based tools from the UbiCompForAll project
+      </description>
+   </category-def>
 </site>

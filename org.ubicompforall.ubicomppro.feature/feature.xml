@@ -2,7 +2,7 @@
 <feature
       id="org.ubicompforall.ubicomppro.feature"
       label="UbiCompPro Editor"
-      version="0.1.0.qualifier"
+      version="0.2.0"
       provider-name="SINTEF">
 
    <description url="https://github.com/UbiCompForAll/UbiComposer/wiki/UbiCompPro">
