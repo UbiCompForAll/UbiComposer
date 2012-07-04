@@ -9,13 +9,13 @@
 
    <extension point="org.eclipse.ui.newWizards">
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+            id="org.obicompforall.wizard.category.ID"
+            name="UbiCompForAll"/>
       <wizard
             id="org.ubicompforall.descriptor.presentation.UbiCompDescriptorModelWizardID"
             name="%_UI_UbiCompDescriptorModelWizard_label"
             class="org.ubicompforall.descriptor.presentation.UbiCompDescriptorModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.obicompforall.wizard.category.ID"
             icon="icons/full/obj16/UbiCompDescriptorModelFile.gif">
          <description>%_UI_UbiCompDescriptorModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>

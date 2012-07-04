@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.ubicompforall.ubicomppro.feature_0.2.0.jar" id="org.ubicompforall.ubicomppro.feature" version="0.2.0">
+   <feature url="features/org.ubicompforall.ubicomppro.feature_0.2.1.jar" id="org.ubicompforall.ubicomppro.feature" version="0.2.1">
       <category name="UbiCompForAll"/>
    </feature>
    <category-def name="UbiCompForAll" label="UbiCompForAll Tools">
