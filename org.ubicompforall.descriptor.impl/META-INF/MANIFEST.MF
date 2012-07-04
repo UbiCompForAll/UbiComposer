@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.ubicompforall.descriptor.impl;singleton:=true
+Bundle-Version: 0.5.0
+Bundle-ClassPath: .
+Bundle-Vendor: SINTEF
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: org.ubicompforall.descriptor,
+ org.ubicompforall.descriptor.impl,
+ org.ubicompforall.descriptor.util
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.emf.ecore;visibility:=reexport
+Bundle-ActivationPolicy: lazy

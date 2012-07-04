@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ UbiCompForAll
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.ubicompforall.org/descriptor"
+            class="org.ubicompforall.descriptor.UbiCompDescriptorPackage"/>
+   </extension>
+
+</plugin>
