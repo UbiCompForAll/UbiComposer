@@ -20,7 +20,7 @@
 	See the License for the specific language governing permissions and
 	limitations under the License.
  */
-package org.ubicompforall.ubicomposer.android;
+package org.ubicompforall.ubicomposer.android.app;
 
 import java.io.File;
 import java.io.FilenameFilter;
@@ -30,6 +30,8 @@ import org.ubicompforall.library.communication.CommunicationFactory;
 import org.ubicompforall.simplelanguage.SimpleLanguagePackage;
 import org.ubicompforall.simplelanguage.UserService;
 import org.ubicompforall.simplelanguage.runtime.RuntimeEnvironment;
+import org.ubicompforall.ubicomposer.android.ModelUtils;
+import org.ubicompforall.ubicomposer.android.TaskListActivity;
 import org.ubicompforall.ubicomposer.util.UserServiceUtils;
 import org.ubicompforall.ubicomprun.android.RuntimeEnvironmentInstance;
 import org.ubicompforall.ubicomprun.android.UserServiceExecutionService;

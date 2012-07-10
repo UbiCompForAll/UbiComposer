@@ -138,15 +138,13 @@ public class TaskListActivity extends AbstractUbiComposerActivity {
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		super.onContextItemSelected(item);
-		switch (item.getItemId()) {
-		case R.id.ubicomposer_task_edit: 
+		int itemId = item.getItemId();
+		if (itemId == R.id.ubicomposer_task_edit) {
 			if (taskSelectedInContextMenu != -1)
 				editTask(taskSelectedInContextMenu);
-			break;
-		case R.id.ubicomposer_task_remove:
+		} else if (itemId == R.id.ubicomposer_task_remove) {
 			if (taskSelectedInContextMenu != -1)
-				removeTask(taskSelectedInContextMenu);			
-			break;
+				removeTask(taskSelectedInContextMenu);
 		}		
 		taskSelectedInContextMenu = -1;
 		return true;

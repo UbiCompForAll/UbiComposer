@@ -224,29 +224,23 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
 		super.onContextItemSelected(item);
-		switch (item.getItemId()) {
-		case R.id.ubicomposer_edit_step: 
+		int itemId = item.getItemId();
+		if (itemId == R.id.ubicomposer_edit_step) {
 			if (stepSelectedInContextMenu != -1)
 				editStep(stepSelectedInContextMenu);
-			break;
-		case R.id.ubicomposer_remove_step:
+		} else if (itemId == R.id.ubicomposer_remove_step) {
 			if (stepSelectedInContextMenu != -1)
-				removeStep(stepSelectedInContextMenu);			
-			break;
-		case R.id.ubicomposer_move_step_down:
+				removeStep(stepSelectedInContextMenu);
+		} else if (itemId == R.id.ubicomposer_move_step_down) {
 			if (stepSelectedInContextMenu != -1)
 				moveStep(stepSelectedInContextMenu, false);
-			break;
-		case R.id.ubicomposer_move_step_up:
+		} else if (itemId == R.id.ubicomposer_move_step_up) {
 			if (stepSelectedInContextMenu != -1)
 				moveStep(stepSelectedInContextMenu, true);
-			break;
-		case R.id.ubicomposer_edit_trigger:
+		} else if (itemId == R.id.ubicomposer_edit_trigger) {
 			editTrigger();
-			break;
-		case R.id.ubicomposer_change_trigger:
+		} else if (itemId == R.id.ubicomposer_change_trigger) {
 			showDialog(SELECT_TRIGGER_DIALOG);
-			break;
 		}		
 		stepSelectedInContextMenu = -1;
 		return true;

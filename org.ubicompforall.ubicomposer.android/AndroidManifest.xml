@@ -6,33 +6,22 @@
 
     <uses-sdk android:minSdkVersion="8" />
 
-    <application
-        android:icon="@drawable/ic_launcher"
-        android:label="@string/ubicomposer_app_name" >
-        <activity
-            android:name=".UbiComposerActivity"
-            android:label="@string/ubicomposer_app_name" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name="EditStepActivity" android:label="Edit step">
+    <application>
+        <activity android:name="org.ubicompforall.ubicomposer.android.EditStepActivity" android:label="Edit step">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name="TaskListActivity" android:label="Task list">
+        <activity android:name="org.ubicompforall.ubicomposer.android.TaskListActivity" android:label="Task list">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name="TaskActivity" android:label="Edit task" android:windowSoftInputMode="stateHidden">
+        <activity android:name="org.ubicompforall.ubicomposer.android.TaskActivity" android:label="Edit task" android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter></activity>
-        <activity android:name="EditTriggerActivity"><intent-filter>
+        <activity android:name="org.ubicompforall.ubicomposer.android.EditTriggerActivity"><intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter></activity>
         <service android:name="org.ubicompforall.ubicomprun.android.UserServiceExecutionService" android:enabled="true"></service>
