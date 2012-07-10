@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/LinearLayout1"
+    android:id="@+id/ubicomposer_LinearLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/taskNameText"
+        android:id="@+id/ubicomposer_taskNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
     </EditText>
 
     <TextView
-        android:id="@+id/triggerLabel"
+        android:id="@+id/ubicomposer_triggerLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/darker_gray"
@@ -20,20 +20,20 @@
         android:textAppearance="?android:attr/textAppearanceMediumInverse" />
 
     <FrameLayout
-        android:id="@+id/triggerFrameLayout"
+        android:id="@+id/ubicomposer_triggerFrameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="50dp" >
     </FrameLayout>
 
     <RelativeLayout
-        android:id="@+id/RelativeLayout1"
+        android:id="@+id/ubicomposer_RelativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/darker_gray" >
 
         <ImageButton
-            android:id="@+id/addStepButton"
+            android:id="@+id/ubicomposer_addStepButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -41,19 +41,19 @@
             android:src="@android:drawable/ic_input_add" />
 
         <TextView
-            android:id="@+id/stepLabel"
+            android:id="@+id/ubicomposer_stepLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/addStepButton"
+            android:layout_toLeftOf="@+id/ubicomposer_addStepButton"
             android:text="... perform the following steps:"
             android:textAppearance="?android:attr/textAppearanceMediumInverse" />
 
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/stepListView"
+        android:id="@+id/ubicomposer_stepListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>

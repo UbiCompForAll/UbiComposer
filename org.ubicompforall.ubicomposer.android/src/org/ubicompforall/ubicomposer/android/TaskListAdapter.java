@@ -72,11 +72,11 @@ public class TaskListAdapter<T> extends ArrayAdapter<T> {
 		if (convertView == null) {
 			// Created the view by inflating its layout and create a holder that keeps
 			// track of the icon, text view and check box for later access 
-			convertView = inflater.inflate(R.layout.task_list_item_layout, null);
+			convertView = inflater.inflate(R.layout.ubicomposer_task_list_item_layout, null);
 			holder = new ViewHolder();
-			holder.bbIcon = (ImageView)convertView.findViewById(R.id.taskItemIconView);
-			holder.bbText = (TextView)convertView.findViewById(R.id.taskItemNameText);
-			holder.bbCheck = (CheckBox)convertView.findViewById(R.id.taskActiveCheckBox);
+			holder.bbIcon = (ImageView)convertView.findViewById(R.id.ubicomposer_taskItemIconView);
+			holder.bbText = (TextView)convertView.findViewById(R.id.ubicomposer_taskItemNameText);
+			holder.bbCheck = (CheckBox)convertView.findViewById(R.id.ubicomposer_taskActiveCheckBox);
 			holder.bbCheck.setTag(this.getItem(position));
 			// Register a listener that will store activation and deactivation of the task
 			holder.bbCheck.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {

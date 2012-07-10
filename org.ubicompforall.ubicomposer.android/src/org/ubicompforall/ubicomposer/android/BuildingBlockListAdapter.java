@@ -71,11 +71,11 @@ public class BuildingBlockListAdapter<T> extends ArrayAdapter<T> {
 		if (convertView == null) {
 			// Created the view by inflating its layout and create a holder that keeps
 			// track of the icon and text views for later access 
-			convertView = inflater.inflate(R.layout.step_layout, null);
+			convertView = inflater.inflate(R.layout.ubicomposer_step_layout, null);
 			holder = new ViewHolder();
-			holder.stepIcon = (ImageView)convertView.findViewById(R.id.stepIconView);
-			holder.typeNameText = (TextView)convertView.findViewById(R.id.mainStepText);
-			holder.userDefinedNameText = (TextView)convertView.findViewById(R.id.minorStepText);
+			holder.stepIcon = (ImageView)convertView.findViewById(R.id.ubicomposer_stepIconView);
+			holder.typeNameText = (TextView)convertView.findViewById(R.id.ubicomposer_mainStepText);
+			holder.userDefinedNameText = (TextView)convertView.findViewById(R.id.ubicomposer_minorStepText);
 			// Register the holder as a tag on the view
 			convertView.setTag(holder);
 		}

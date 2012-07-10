@@ -76,8 +76,8 @@ public class EditStepActivity extends AbstractEditBuildingBlockActivity {
         BuildingBlock buildingBlock = myTask.getStepSequence().get(stepIndex);
         setBuildingBlock(buildingBlock);
                 
-        setContentView(R.layout.edit_step_layout);       
-        setBuildingBlockView( (LinearLayout)this.findViewById(R.id.stepContentView));
+        setContentView(R.layout.ubicomposer_edit_step_layout);       
+        setBuildingBlockView( (LinearLayout)this.findViewById(R.id.ubicomposer_stepContentView));
 
         // Now that the building block and building block view is set,
         // call the superclass to create editors for the properties
@@ -91,7 +91,7 @@ public class EditStepActivity extends AbstractEditBuildingBlockActivity {
         setBuildingBlock(buildingBlock);
 
         // Update the icon view to show the icon of the task
-        ImageView triggerIcon = (ImageView)this.findViewById(R.id.stepImageView);
+        ImageView triggerIcon = (ImageView)this.findViewById(R.id.ubicomposer_stepImageView);
 		try {
 			String iconFileName = this.getFileStreamPath(buildingBlock.getDescriptor().getIconUrl()).getAbsolutePath();
 			triggerIcon.setImageURI(Uri.parse(iconFileName));
@@ -101,9 +101,9 @@ public class EditStepActivity extends AbstractEditBuildingBlockActivity {
 
 		// Update the label showing the building block name and the edit field
 		// for showing and editing the user defined name
-        TextView stepTypeLabel = (TextView) this.findViewById(R.id.stepTypeLabel);
+        TextView stepTypeLabel = (TextView) this.findViewById(R.id.ubicomposer_stepTypeLabel);
         stepTypeLabel.setText(buildingBlock.getDescriptor().getUserFriendlyName());
-        EditText stepNameText = (EditText) this.findViewById(R.id.stepNameText);
+        EditText stepNameText = (EditText) this.findViewById(R.id.ubicomposer_stepNameText);
         stepNameText.setText(buildingBlock.getName());
 
         // Finally, call the super method to update the property editors
@@ -115,7 +115,7 @@ public class EditStepActivity extends AbstractEditBuildingBlockActivity {
 	protected void updateModelFromViews() {
 		// First, update user defined name of the building block
         BuildingBlock buildingBlock = getBuildingBlock();    
-        EditText triggerNameText = (EditText) this.findViewById(R.id.stepNameText);
+        EditText triggerNameText = (EditText) this.findViewById(R.id.ubicomposer_stepNameText);
         buildingBlock.setName(triggerNameText.getText().toString());
         // Then, call the super method to update the properties
 		super.updateModelFromViews();

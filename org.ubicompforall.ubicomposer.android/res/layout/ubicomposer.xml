@@ -5,38 +5,38 @@
     android:orientation="vertical" >
 
     <Button
-        android:id="@+id/createUserServiceButton"
+        android:id="@+id/ubicomposer_createUserServiceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create a new user service..." />
 
     <Button
-        android:id="@+id/openUserServiceButton"
+        android:id="@+id/ubicomposer_openUserServiceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Open user service..." />
 
     <TextView
-        android:id="@+id/serviceNameTextView"
+        android:id="@+id/ubicomposer_serviceNameTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="&lt;&lt; open or create service &gt;&gt;"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/editButton"
+        android:id="@+id/ubicomposer_editButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit" />
 
     <Button
-        android:id="@+id/startButton"
+        android:id="@+id/ubicomposer_startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start" />
 
     <Button
-        android:id="@+id/stopButton"
+        android:id="@+id/ubicomposer_stopButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Stop" />

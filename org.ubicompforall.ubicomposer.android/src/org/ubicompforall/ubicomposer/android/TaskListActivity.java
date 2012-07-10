@@ -83,10 +83,10 @@ public class TaskListActivity extends AbstractUbiComposerActivity {
             ModelUtils.copyAssetFiles(this);
         	userService = ModelUtils.createModel(this, "DebugService");
         }
-        setContentView(R.layout.task_list_layout);
+        setContentView(R.layout.ubicomposer_task_list_layout);
 
         
-        taskListView = (ListView)this.findViewById(R.id.taskListView);
+        taskListView = (ListView)this.findViewById(R.id.ubicomposer_taskListView);
         taskListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
@@ -94,7 +94,7 @@ public class TaskListActivity extends AbstractUbiComposerActivity {
 			}
 		});
        
-        ImageButton addTaskButton = (ImageButton)this.findViewById(R.id.addTaskButton);
+        ImageButton addTaskButton = (ImageButton)this.findViewById(R.id.ubicomposer_addTaskButton);
         addTaskButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -139,11 +139,11 @@ public class TaskListActivity extends AbstractUbiComposerActivity {
 	public boolean onContextItemSelected(MenuItem item) {
 		super.onContextItemSelected(item);
 		switch (item.getItemId()) {
-		case R.id.task_edit: 
+		case R.id.ubicomposer_task_edit: 
 			if (taskSelectedInContextMenu != -1)
 				editTask(taskSelectedInContextMenu);
 			break;
-		case R.id.task_remove:
+		case R.id.ubicomposer_task_remove:
 			if (taskSelectedInContextMenu != -1)
 				removeTask(taskSelectedInContextMenu);			
 			break;
@@ -185,7 +185,7 @@ public class TaskListActivity extends AbstractUbiComposerActivity {
 		builder.setTitle("Select trigger for the new task:");
 		triggerDescList = DescriptorLibraryUtils.getTriggerDescs(getUserService());
 
-		ListAdapter adapter = new BuildingBlockDescListAdapter(this, R.layout.buildingblockdesc_layout, R.id.buildingBlockNameText, triggerDescList);
+		ListAdapter adapter = new BuildingBlockDescListAdapter(this, R.layout.ubicomposer_buildingblockdesc_layout, R.id.ubicomposer_buildingBlockNameText, triggerDescList);
 		
 		builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 			@Override
@@ -215,10 +215,10 @@ public class TaskListActivity extends AbstractUbiComposerActivity {
 	}
 	
 	protected void updateViewsFromModel() {
-        taskListAdapter = new TaskListAdapter<Task>(this, R.layout.task_list_layout, R.id.taskItemNameText,
+        taskListAdapter = new TaskListAdapter<Task>(this, R.layout.ubicomposer_task_list_layout, R.id.ubicomposer_taskItemNameText,
         		  getUserService().getTasks());
         taskListView.setAdapter(taskListAdapter);
-        TextView taskHeader = (TextView)this.findViewById(R.id.taskListLabel);
+        TextView taskHeader = (TextView)this.findViewById(R.id.ubicomposer_taskListLabel);
         taskHeader.setText("Tasks in " + getUserService().getName());
  	}
 

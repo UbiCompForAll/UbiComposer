@@ -101,9 +101,9 @@ public class TaskActivity extends AbstractUbiComposerActivity {
         }			
 
         task = userService.getTasks().get(taskIndex);
-        setContentView(R.layout.main);
-        taskNameText = (EditText)this.findViewById(R.id.taskNameText);
-        stepListView = (ListView)this.findViewById(R.id.stepListView);
+        setContentView(R.layout.ubicomposer_task);
+        taskNameText = (EditText)this.findViewById(R.id.ubicomposer_taskNameText);
+        stepListView = (ListView)this.findViewById(R.id.ubicomposer_stepListView);
         stepListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
@@ -112,7 +112,7 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 		});
 //        stepListView.setOnLongClickListener(new)
         this.registerForContextMenu(stepListView);
-        ImageButton addStepButton = (ImageButton)this.findViewById(R.id.addStepButton);
+        ImageButton addStepButton = (ImageButton)this.findViewById(R.id.ubicomposer_addStepButton);
         addStepButton.setOnClickListener(new Button.OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -122,9 +122,9 @@ public class TaskActivity extends AbstractUbiComposerActivity {
         
         
         // Trigger
-        FrameLayout triggerContainerView = (FrameLayout)this.findViewById(R.id.triggerFrameLayout);
+        FrameLayout triggerContainerView = (FrameLayout)this.findViewById(R.id.ubicomposer_triggerFrameLayout);
         LayoutInflater inflater = LayoutInflater.from(this);
-        triggerView = inflater.inflate(R.layout.step_layout, null);
+        triggerView = inflater.inflate(R.layout.ubicomposer_step_layout, null);
         triggerView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -138,9 +138,9 @@ public class TaskActivity extends AbstractUbiComposerActivity {
     }
 
     private void updateTriggerView() {
-        ImageView triggerIcon = (ImageView)triggerView.findViewById(R.id.stepIconView);
-		TextView triggerMainText = (TextView)triggerView.findViewById(R.id.mainStepText);
-		TextView triggerMinorText = (TextView)triggerView.findViewById(R.id.minorStepText);
+        ImageView triggerIcon = (ImageView)triggerView.findViewById(R.id.ubicomposer_stepIconView);
+		TextView triggerMainText = (TextView)triggerView.findViewById(R.id.ubicomposer_mainStepText);
+		TextView triggerMinorText = (TextView)triggerView.findViewById(R.id.ubicomposer_minorStepText);
 		Trigger trigger = task.getTrigger();
 		
 		if (trigger != null) {
@@ -210,7 +210,7 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
-		if (v.getId() == R.id.stepListView) {
+		if (v.getId() == R.id.ubicomposer_stepListView) {
 			getMenuInflater().inflate(R.menu.step_list_context_menu, menu);
 			menu.setHeaderTitle("Step control:");
 			stepSelectedInContextMenu = ((AdapterView.AdapterContextMenuInfo)menuInfo).position;
@@ -225,26 +225,26 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 	public boolean onContextItemSelected(MenuItem item) {
 		super.onContextItemSelected(item);
 		switch (item.getItemId()) {
-		case R.id.edit_step: 
+		case R.id.ubicomposer_edit_step: 
 			if (stepSelectedInContextMenu != -1)
 				editStep(stepSelectedInContextMenu);
 			break;
-		case R.id.remove_step:
+		case R.id.ubicomposer_remove_step:
 			if (stepSelectedInContextMenu != -1)
 				removeStep(stepSelectedInContextMenu);			
 			break;
-		case R.id.move_step_down:
+		case R.id.ubicomposer_move_step_down:
 			if (stepSelectedInContextMenu != -1)
 				moveStep(stepSelectedInContextMenu, false);
 			break;
-		case R.id.move_step_up:
+		case R.id.ubicomposer_move_step_up:
 			if (stepSelectedInContextMenu != -1)
 				moveStep(stepSelectedInContextMenu, true);
 			break;
-		case R.id.edit_trigger:
+		case R.id.ubicomposer_edit_trigger:
 			editTrigger();
 			break;
-		case R.id.change_trigger:
+		case R.id.ubicomposer_change_trigger:
 			showDialog(SELECT_TRIGGER_DIALOG);
 			break;
 		}		
@@ -294,7 +294,7 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 	private Dialog createSelectStepDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Select step to add");
-		ListAdapter adapter = new BuildingBlockDescListAdapter(this, R.layout.buildingblockdesc_layout, R.id.buildingBlockNameText, getBuildingBlockDescs());
+		ListAdapter adapter = new BuildingBlockDescListAdapter(this, R.layout.ubicomposer_buildingblockdesc_layout, R.id.ubicomposer_buildingBlockNameText, getBuildingBlockDescs());
 		
 		builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 			@Override
@@ -311,7 +311,7 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 		builder.setTitle("Select trigger for the task:");
 		triggerDescList = DescriptorLibraryUtils.getTriggerDescs(getUserService());
 
-		ListAdapter adapter = new BuildingBlockDescListAdapter(this, R.layout.buildingblockdesc_layout, R.id.buildingBlockNameText, triggerDescList);
+		ListAdapter adapter = new BuildingBlockDescListAdapter(this, R.layout.ubicomposer_buildingblockdesc_layout, R.id.ubicomposer_buildingBlockNameText, triggerDescList);
 		
 		builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 			@Override
@@ -352,9 +352,9 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 	@Override
 	protected void updateViewsFromModel() {
         task = getUserService().getTasks().get(taskIndex);
-        taskNameText = (EditText)this.findViewById(R.id.taskNameText);
+        taskNameText = (EditText)this.findViewById(R.id.ubicomposer_taskNameText);
         taskNameText.setText(task.getName());
-        taskListAdapter = new BuildingBlockListAdapter<Step>(this, R.layout.step_layout, R.id.mainStepText, task.getStepSequence());
+        taskListAdapter = new BuildingBlockListAdapter<Step>(this, R.layout.ubicomposer_step_layout, R.id.ubicomposer_mainStepText, task.getStepSequence());
         stepListView.setAdapter(taskListAdapter);
 		this.updateTriggerView();
 	}

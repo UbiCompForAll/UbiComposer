@@ -69,10 +69,10 @@ public class BuildingBlockDescListAdapter extends ArrayAdapter<BuildingBlockDesc
 		if (convertView == null) {
 			// Created the view by inflating its layout and create a holder that keeps
 			// track of the icon and text views for later access 
-			convertView = inflater.inflate(R.layout.buildingblockdesc_layout, null);
+			convertView = inflater.inflate(R.layout.ubicomposer_buildingblockdesc_layout, null);
 			holder = new ViewHolder();
-			holder.bbIcon = (ImageView)convertView.findViewById(R.id.buildingBlockIconView);
-			holder.bbText = (TextView)convertView.findViewById(R.id.buildingBlockNameText);
+			holder.bbIcon = (ImageView)convertView.findViewById(R.id.ubicomposer_buildingBlockIconView);
+			holder.bbText = (TextView)convertView.findViewById(R.id.ubicomposer_buildingBlockNameText);
 			// Register the holder as a tag on the view
 			convertView.setTag(holder);
 		}

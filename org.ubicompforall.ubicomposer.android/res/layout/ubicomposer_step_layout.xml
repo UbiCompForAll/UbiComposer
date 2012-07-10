@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <ImageView
-        android:id="@+id/stepIconView"
+        android:id="@+id/ubicomposer_stepIconView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_width="32dp"
@@ -12,20 +12,20 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/mainStepText"
+        android:id="@+id/ubicomposer_mainStepText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/stepIconView"       
+        android:layout_toRightOf="@+id/ubicomposer_stepIconView"       
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/minorStepText"
+        android:id="@+id/ubicomposer_minorStepText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mainStepText"
-        android:layout_alignLeft="@+id/mainStepText"
+        android:layout_below="@+id/ubicomposer_mainStepText"
+        android:layout_alignLeft="@+id/ubicomposer_mainStepText"
         android:text="Small Text"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 

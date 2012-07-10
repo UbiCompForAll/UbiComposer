@@ -1,43 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/RelativeLayout1"
+    android:id="@+id/ubicomposer_RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/stepTypeLabel"
+        android:id="@+id/ubicomposer_stepTypeLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@+id/stepImageView"
+        android:layout_toRightOf="@+id/ubicomposer_stepImageView"
         android:text="Step type"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <LinearLayout
-        android:id="@+id/stepContentView"
+        android:id="@+id/ubicomposer_stepContentView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/stepNameText"
+        android:layout_below="@+id/ubicomposer_stepNameText"
         android:orientation="vertical" >
 
     </LinearLayout>
     
     
     <ImageView
-        android:id="@+id/stepImageView"
+        android:id="@+id/ubicomposer_stepImageView"
         android:layout_width="48dp"
         android:layout_height="48dp"       
-        android:layout_alignBottom="@+id/stepNameText"
+        android:layout_alignBottom="@+id/ubicomposer_stepNameText"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:paddingRight="4dp"
         android:src="@drawable/ic_launcher" />
 
     <EditText
-        android:id="@+id/stepNameText"
+        android:id="@+id/ubicomposer_stepNameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/stepTypeLabel"
-        android:layout_toRightOf="@+id/stepImageView" >
+        android:layout_below="@+id/ubicomposer_stepTypeLabel"
+        android:layout_toRightOf="@+id/ubicomposer_stepImageView" >
     </EditText>
 
 </RelativeLayout>

@@ -4,7 +4,7 @@
     android:layout_height="match_parent" >
 
     <ImageView
-        android:id="@+id/buildingBlockIconView"
+        android:id="@+id/ubicomposer_buildingBlockIconView"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:layout_width="32dp"
@@ -12,11 +12,11 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
-        android:id="@+id/buildingBlockNameText"
+        android:id="@+id/ubicomposer_buildingBlockNameText"
         android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="32dp"
-        android:layout_toRightOf="@+id/buildingBlockIconView"       
+        android:layout_toRightOf="@+id/ubicomposer_buildingBlockIconView"       
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMediumInverse" />
 

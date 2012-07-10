@@ -64,7 +64,7 @@ public class UbiComposerActivity extends Activity {
         
         ModelUtils.copyAssetFiles(this);
         setContentView(R.layout.ubicomposer);
-        Button openButton = (Button)this.findViewById(R.id.openUserServiceButton);
+        Button openButton = (Button)this.findViewById(R.id.ubicomposer_openUserServiceButton);
         openButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -72,27 +72,27 @@ public class UbiComposerActivity extends Activity {
 				showDialog(LOAD_FILE_DIALOG);
 			}} );
         
-        Button newButton = (Button)this.findViewById(R.id.createUserServiceButton);
+        Button newButton = (Button)this.findViewById(R.id.ubicomposer_createUserServiceButton);
         newButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				showDialog(NEW_USER_SERVICE_DIALOG);
 			}} );
         
-        Button editButton = (Button)this.findViewById(R.id.editButton);
+        Button editButton = (Button)this.findViewById(R.id.ubicomposer_editButton);
         editButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				startEditing();
 			}} );
         
-        Button startButton = (Button)this.findViewById(R.id.startButton);
+        Button startButton = (Button)this.findViewById(R.id.ubicomposer_startButton);
         startButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				startRunning();
 			}} );
-        Button stopButton = (Button)this.findViewById(R.id.stopButton);
+        Button stopButton = (Button)this.findViewById(R.id.ubicomposer_stopButton);
         stopButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -241,7 +241,7 @@ public class UbiComposerActivity extends Activity {
     
     protected void setCurrentFileName(String fileName) {
     	this.fileName = fileName;
-    	TextView fileNameView = (TextView)this.findViewById(R.id.serviceNameTextView);
+    	TextView fileNameView = (TextView)this.findViewById(R.id.ubicomposer_serviceNameTextView);
     	fileNameView.setText("User service: " + fileName.substring(0, fileName.lastIndexOf(".")));
     }
 }

@@ -5,13 +5,13 @@
     android:orientation="vertical" >
  
     <RelativeLayout
-        android:id="@+id/TaskListHeaderLayout"
+        android:id="@+id/ubicomposer_TaskListHeaderLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/darker_gray" >
 
         <ImageButton
-            android:id="@+id/addTaskButton"
+            android:id="@+id/ubicomposer_addTaskButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
@@ -19,19 +19,19 @@
             android:src="@android:drawable/ic_input_add" />
 
         <TextView
-            android:id="@+id/taskListLabel"
+            android:id="@+id/ubicomposer_taskListLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@+id/addTaskButton"
+            android:layout_toLeftOf="@+id/ubicomposer_addTaskButton"
             android:text="Tasks:"
             android:textAppearance="?android:attr/textAppearanceMediumInverse" />
 
     </RelativeLayout>
 
     <ListView
-        android:id="@+id/taskListView"
+        android:id="@+id/ubicomposer_taskListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>    

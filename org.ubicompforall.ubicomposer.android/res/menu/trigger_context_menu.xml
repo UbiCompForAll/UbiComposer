@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item android:id="@+id/edit_trigger" android:title="Edit"></item><item android:id="@+id/change_trigger" android:title="Change trigger"></item>
+    <item android:id="@+id/ubicomposer_edit_trigger" android:title="Edit"></item><item android:id="@+id/ubicomposer_change_trigger" android:title="Change trigger"></item>
     
     
 
