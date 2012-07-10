@@ -79,7 +79,7 @@ public class EditTriggerActivity extends AbstractEditBuildingBlockActivity {
 
 	@Override
 	protected void updateViewsFromModel() {
-		myTask = getUserService().getTasks().get(taskIndex);
+		myTask =  getTask();
         BuildingBlock buildingBlock = myTask.getTrigger();
         setBuildingBlock(buildingBlock);
 
