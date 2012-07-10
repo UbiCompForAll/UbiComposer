@@ -211,12 +211,12 @@ public class TaskActivity extends AbstractUbiComposerActivity {
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		if (v.getId() == R.id.ubicomposer_stepListView) {
-			getMenuInflater().inflate(R.menu.step_list_context_menu, menu);
+			getMenuInflater().inflate(R.menu.ubicomposer_step_list_context_menu, menu);
 			menu.setHeaderTitle("Step control:");
 			stepSelectedInContextMenu = ((AdapterView.AdapterContextMenuInfo)menuInfo).position;
 		}
 		else if (v == triggerView) {
-			getMenuInflater().inflate(R.menu.trigger_context_menu, menu);
+			getMenuInflater().inflate(R.menu.ubicomposer_trigger_context_menu, menu);
 			menu.setHeaderTitle("Trigger control:");			
 		}
 	}

@@ -129,7 +129,7 @@ public class TaskListActivity extends AbstractUbiComposerActivity {
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		if (v == taskListView) {
-			getMenuInflater().inflate(R.menu.task_list_context_menu, menu);
+			getMenuInflater().inflate(R.menu.ubicomposer_task_list_context_menu, menu);
 			menu.setHeaderTitle("Task control:");
 			taskSelectedInContextMenu = ((AdapterView.AdapterContextMenuInfo)menuInfo).position;
 		}
