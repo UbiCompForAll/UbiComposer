@@ -501,6 +501,26 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		}
 	}
 	
+	
+	/*
+	 * Retrieving references to domain objects
+	 * 
+	 * What is minimally needed:
+	 * - reference (id etc) to the domain object
+	 * - display name to show to the user
+	 * 
+	 * 
+	 * If we use Content providers:
+	 * - URI:  to content provider (table)
+	 * - String: projection string (column, select statement)
+	 * - Selection: (where clause)
+	 * - selectionArgs: ???
+	 * - sortOrder
+	 * 
+	 */
+	
+	
+	
 	//TODO: Implement property references for booleans
 	//TODO: Consider isResultValue etc. in property reference code
 	//TODO: Update code for to/from model
