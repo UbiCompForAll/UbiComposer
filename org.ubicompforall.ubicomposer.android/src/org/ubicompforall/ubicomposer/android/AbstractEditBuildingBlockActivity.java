@@ -29,19 +29,24 @@ import java.util.List;
 import java.util.Map;
 
 import org.ubicompforall.descriptor.BuildingBlockDesc;
+import org.ubicompforall.descriptor.DomainObjectDesc;
 import org.ubicompforall.descriptor.Property;
 import org.ubicompforall.descriptor.TriggerDesc;
 import org.ubicompforall.simplelanguage.BuildingBlock;
+import org.ubicompforall.simplelanguage.DomainObjectReference;
 import org.ubicompforall.simplelanguage.InformationObject;
 import org.ubicompforall.simplelanguage.PropertyAssignment;
 import org.ubicompforall.simplelanguage.PropertyReference;
 import org.ubicompforall.simplelanguage.SimpleLanguageFactory;
 import org.ubicompforall.simplelanguage.Step;
 import org.ubicompforall.simplelanguage.Task;
+import org.ubicompforall.simplelanguage.DomainObjectAssignment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
+import android.net.Uri;
 import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
@@ -50,6 +55,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.SimpleCursorAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
@@ -219,9 +226,40 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		bind(prop, checkBox);
 	}
 
+	
+
+    /**
+     * Create an editor for a the specified domain reference property and add it to the building block view
+     * @param prop The property to add an editor for
+     */
+	protected void createDomainReferenceField(Property prop) {
+		TextView fieldNameLabel = new TextView(this);
+		fieldNameLabel.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		fieldNameLabel.setText(prop.getUserFriendlyName());
+		buildingBlockView.addView(fieldNameLabel);
+
+		// Create a list box item
+		Spinner spinner = new Spinner(this);
+		spinner.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		//spinner.setAdapter(adapter);
+		//spinner.setHint(prop.getDescription());
+		//PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
+		//if (assign != null) {
+			// Create binding between the widget and the value of the assignment
+		//	checkBox.setChecked(Boolean.getBoolean(assign.getValue()));
+		//} 
+		
+		buildingBlockView.addView(spinner);		
+		bind(prop, spinner);
+	}
+	
+	
+	
+	
 	Map<String, EditText> bindings = new HashMap<String, EditText>();
 	Map<String, CheckBox> boolBindings = new HashMap<String, CheckBox>();
 	Map<String, ImageButton> buttonBindings = new HashMap<String, ImageButton>();
+	Map<String, Spinner> listBindings = new HashMap<String, Spinner>();
 	
 	/**
 	 * Add a binding for the specified property to the edit field and the button.
@@ -246,6 +284,17 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	protected void bind(Property prop, CheckBox checkBox) {
 		boolBindings.put(prop.getName(), checkBox);		
 	}
+
+	/**
+	 * Add a binding for the specified property to the check box.
+	 * The bindings are used to keep the status of the property in synch with
+	 * the check box. 
+	 * @param prop The property to add a binding for
+	 * @param checkBox The check box to add a binding for
+	 */
+	protected void bind(Property prop, Spinner spinner) {
+		listBindings.put(prop.getName(), spinner);		
+	}
 	
 	/**
 	 * Update a property to reflect any change done in the view
@@ -263,6 +312,47 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		}
 	}
 	
+	
+	protected String stringOrNull(String theString) {
+		return theString.equals("") ? null : theString;
+	}
+	
+	String SPLIT_STR = "[,\\. ]";
+	
+	protected Cursor queryForDomainObjects(DomainObjectDesc domDesc) {
+		String selArgs[] = null;
+		if (!domDesc.getSelectionArgs().equals("")) {
+			selArgs = domDesc.getSelectionArgs().split(SPLIT_STR);
+		}
+		
+		
+		Cursor mCursor = getContentResolver().query(
+				Uri.parse(domDesc.getContentURI()),   
+			    domDesc.getProjection().split(SPLIT_STR),                        
+			    domDesc.getSelection(),                    
+			    selArgs,                     
+			    stringOrNull(domDesc.getSortOrder()));
+		return mCursor;
+	}
+	
+
+	public class DomainDataBinder implements SimpleCursorAdapter.ViewBinder {
+		@Override
+		public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
+			// Combine all columns after the ID (col 0) into a display string
+			// with space between
+			String displayStr = "";
+			for (int i = 1; i < cursor.getColumnCount(); i++) {
+				if (i > 1)
+					displayStr = displayStr + " ";
+				displayStr = displayStr + cursor.getString(columnIndex);
+			}
+			((TextView) view).setText(displayStr);
+			return true;
+		}
+
+	}
+	
 	/**
 	 * Update the views to reflect any change done the property they
 	 * are bound to.
@@ -270,7 +360,38 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	 */
 	protected void updateViewFromProperty(Property prop) {
 		PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
-		if (prop.getDataType().getName().equals("Boolean")) {
+		
+		if (prop.getDataType() instanceof DomainObjectDesc) {
+			// First, get the descriptor for the domain objects, and query for the available objects to select from
+			DomainObjectDesc domDesc = (DomainObjectDesc)prop.getDataType();
+			Cursor mCursor = queryForDomainObjects(domDesc);
+
+			
+			String[] from = new String[]{"abc"}; // TODO: change this
+			int[] to = new int[]{android.R.id.text1};
+			SimpleCursorAdapter adapter =
+			  new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, mCursor, from, to );
+			adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+			adapter.setViewBinder(new DomainDataBinder());
+
+			Spinner spin = listBindings.get(prop.getName());
+			spin.setAdapter(adapter);			
+			
+			
+			//DomainObjectReference refs[] = new DomainObjectReference[mCursor.getCount()];
+			//mCursor.m
+			
+			
+			if (assign != null) {
+				DomainObjectReference domainObject = ((DomainObjectAssignment) assign).getDomainObject().get(0);
+				//Spinner spin = listBindings.get(prop.getName());
+				
+				// TODO: Find position of domainObject in the adapater array, and set in setSelection()
+				//spin.setSelection(position);
+				
+			}
+		}
+		else if (prop.getDataType().getName().equals("Boolean")) {
 			CheckBox cb = boolBindings.get(prop.getName());
 			if (assign != null)
 				cb.setChecked(Boolean.parseBoolean(assign.getValue()));
