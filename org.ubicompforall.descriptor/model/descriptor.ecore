@@ -9,7 +9,13 @@
   <eClassifiers xsi:type="ecore:EClass" name="TriggerDesc" eSuperTypes="#//BuildingBlockDesc"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionDesc" eSuperTypes="#//BuildingBlockDesc"/>
   <eClassifiers xsi:type="ecore:EClass" name="ConditionalStepDesc" eSuperTypes="#//StepDesc"/>
-  <eClassifiers xsi:type="ecore:EClass" name="DomObjRefDesc" eSuperTypes="#//BuildingBlockDesc"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DomainObjectDesc" eSuperTypes="#//Classifier">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="contentURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="projection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selection" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="selectionArgs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sortOrder" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="QueryDesc" eSuperTypes="#//BuildingBlockDesc"/>
   <eClassifiers xsi:type="ecore:EClass" name="BuildingBlockDesc" abstract="true" eSuperTypes="#//Classifier">
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
