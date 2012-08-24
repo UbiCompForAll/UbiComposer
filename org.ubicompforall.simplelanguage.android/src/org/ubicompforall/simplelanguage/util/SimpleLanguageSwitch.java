@@ -154,8 +154,6 @@ public class SimpleLanguageSwitch<T> {
 			case SimpleLanguagePackage.DOMAIN_OBJECT_REFERENCE: {
 				DomainObjectReference domainObjectReference = (DomainObjectReference)theEObject;
 				T result = caseDomainObjectReference(domainObjectReference);
-				if (result == null) result = caseInformationObject(domainObjectReference);
-				if (result == null) result = caseBuildingBlock(domainObjectReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -168,6 +166,13 @@ public class SimpleLanguageSwitch<T> {
 			case SimpleLanguagePackage.USER_SERVICE: {
 				UserService userService = (UserService)theEObject;
 				T result = caseUserService(userService);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case SimpleLanguagePackage.DOMAIN_OBJECT_ASSIGNMENT: {
+				DomainObjectAssignment domainObjectAssignment = (DomainObjectAssignment)theEObject;
+				T result = caseDomainObjectAssignment(domainObjectAssignment);
+				if (result == null) result = casePropertyAssignment(domainObjectAssignment);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -352,6 +357,21 @@ public class SimpleLanguageSwitch<T> {
 	 * @generated
 	 */
 	public T caseUserService(UserService object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Object Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Object Assignment</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDomainObjectAssignment(DomainObjectAssignment object) {
 		return null;
 	}
 

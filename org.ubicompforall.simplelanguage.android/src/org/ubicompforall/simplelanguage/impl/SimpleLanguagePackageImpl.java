@@ -18,6 +18,7 @@ import org.ubicompforall.descriptor.UbiCompDescriptorPackage;
 import org.ubicompforall.simplelanguage.BuildingBlock;
 import org.ubicompforall.simplelanguage.Condition;
 import org.ubicompforall.simplelanguage.ConditionalStep;
+import org.ubicompforall.simplelanguage.DomainObjectAssignment;
 import org.ubicompforall.simplelanguage.DomainObjectReference;
 import org.ubicompforall.simplelanguage.InformationObject;
 import org.ubicompforall.simplelanguage.PropertyAssignment;
@@ -120,6 +121,13 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 	 * @generated
 	 */
 	private EClass userServiceEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass domainObjectAssignmentEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -406,6 +414,33 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDomainObjectReference_Id() {
+		return (EAttribute)domainObjectReferenceEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDomainObjectReference_DisplayText() {
+		return (EAttribute)domainObjectReferenceEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainObjectReference_DataType() {
+		return (EReference)domainObjectReferenceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertyAssignment() {
 		return propertyAssignmentEClass;
 	}
@@ -469,6 +504,24 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getDomainObjectAssignment() {
+		return domainObjectAssignmentEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getDomainObjectAssignment_DomainObject() {
+		return (EReference)domainObjectAssignmentEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public SimpleLanguageFactory getSimpleLanguageFactory() {
 		return (SimpleLanguageFactory)getEFactoryInstance();
 	}
@@ -525,6 +578,9 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 		createEAttribute(buildingBlockEClass, BUILDING_BLOCK__NAME);
 
 		domainObjectReferenceEClass = createEClass(DOMAIN_OBJECT_REFERENCE);
+		createEAttribute(domainObjectReferenceEClass, DOMAIN_OBJECT_REFERENCE__ID);
+		createEAttribute(domainObjectReferenceEClass, DOMAIN_OBJECT_REFERENCE__DISPLAY_TEXT);
+		createEReference(domainObjectReferenceEClass, DOMAIN_OBJECT_REFERENCE__DATA_TYPE);
 
 		propertyAssignmentEClass = createEClass(PROPERTY_ASSIGNMENT);
 		createEAttribute(propertyAssignmentEClass, PROPERTY_ASSIGNMENT__PROPERTY);
@@ -534,6 +590,9 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 		createEReference(userServiceEClass, USER_SERVICE__TASKS);
 		createEAttribute(userServiceEClass, USER_SERVICE__NAME);
 		createEReference(userServiceEClass, USER_SERVICE__LIBRARIES);
+
+		domainObjectAssignmentEClass = createEClass(DOMAIN_OBJECT_ASSIGNMENT);
+		createEReference(domainObjectAssignmentEClass, DOMAIN_OBJECT_ASSIGNMENT__DOMAIN_OBJECT);
 	}
 
 	/**
@@ -575,7 +634,7 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 		propertyReferenceEClass.getESuperTypes().add(this.getPropertyAssignment());
 		informationObjectEClass.getESuperTypes().add(this.getBuildingBlock());
 		conditionEClass.getESuperTypes().add(this.getBuildingBlock());
-		domainObjectReferenceEClass.getESuperTypes().add(this.getInformationObject());
+		domainObjectAssignmentEClass.getESuperTypes().add(this.getPropertyAssignment());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(stepEClass, Step.class, "Step", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -619,6 +678,9 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 		initEAttribute(getBuildingBlock_Name(), ecorePackage.getEString(), "name", null, 0, 1, BuildingBlock.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(domainObjectReferenceEClass, DomainObjectReference.class, "DomainObjectReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDomainObjectReference_Id(), ecorePackage.getEString(), "id", null, 0, 1, DomainObjectReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainObjectReference_DisplayText(), ecorePackage.getEString(), "displayText", null, 0, 1, DomainObjectReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDomainObjectReference_DataType(), theUbiCompDescriptorPackage.getDomainObjectDesc(), null, "dataType", null, 1, 1, DomainObjectReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertyAssignmentEClass, PropertyAssignment.class, "PropertyAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertyAssignment_Property(), ecorePackage.getEString(), "property", null, 0, 1, PropertyAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -628,6 +690,9 @@ public class SimpleLanguagePackageImpl extends EPackageImpl implements SimpleLan
 		initEReference(getUserService_Tasks(), this.getTask(), null, "tasks", null, 0, -1, UserService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUserService_Name(), ecorePackage.getEString(), "name", null, 0, 1, UserService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getUserService_Libraries(), theUbiCompDescriptorPackage.getDescriptorLibrary(), null, "libraries", null, 0, -1, UserService.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(domainObjectAssignmentEClass, DomainObjectAssignment.class, "DomainObjectAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDomainObjectAssignment_DomainObject(), this.getDomainObjectReference(), null, "domainObject", null, 0, -1, DomainObjectAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

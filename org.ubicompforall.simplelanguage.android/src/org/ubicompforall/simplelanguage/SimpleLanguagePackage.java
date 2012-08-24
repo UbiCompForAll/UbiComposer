@@ -584,31 +584,31 @@ public interface SimpleLanguagePackage extends EPackage {
 	int DOMAIN_OBJECT_REFERENCE = 9;
 
 	/**
-	 * The feature id for the '<em><b>Descriptor</b></em>' reference.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_OBJECT_REFERENCE__DESCRIPTOR = INFORMATION_OBJECT__DESCRIPTOR;
+	int DOMAIN_OBJECT_REFERENCE__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Property Values</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Display Text</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_OBJECT_REFERENCE__PROPERTY_VALUES = INFORMATION_OBJECT__PROPERTY_VALUES;
+	int DOMAIN_OBJECT_REFERENCE__DISPLAY_TEXT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Data Type</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_OBJECT_REFERENCE__NAME = INFORMATION_OBJECT__NAME;
+	int DOMAIN_OBJECT_REFERENCE__DATA_TYPE = 2;
 
 	/**
 	 * The number of structural features of the '<em>Domain Object Reference</em>' class.
@@ -617,7 +617,7 @@ public interface SimpleLanguagePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOMAIN_OBJECT_REFERENCE_FEATURE_COUNT = INFORMATION_OBJECT_FEATURE_COUNT + 0;
+	int DOMAIN_OBJECT_REFERENCE_FEATURE_COUNT = 3;
 
 	/**
 	 * The meta object id for the '{@link org.ubicompforall.simplelanguage.impl.UserServiceImpl <em>User Service</em>}' class.
@@ -664,6 +664,53 @@ public interface SimpleLanguagePackage extends EPackage {
 	 * @ordered
 	 */
 	int USER_SERVICE_FEATURE_COUNT = 3;
+
+
+	/**
+	 * The meta object id for the '{@link org.ubicompforall.simplelanguage.impl.DomainObjectAssignmentImpl <em>Domain Object Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.ubicompforall.simplelanguage.impl.DomainObjectAssignmentImpl
+	 * @see org.ubicompforall.simplelanguage.impl.SimpleLanguagePackageImpl#getDomainObjectAssignment()
+	 * @generated
+	 */
+	int DOMAIN_OBJECT_ASSIGNMENT = 12;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_ASSIGNMENT__PROPERTY = PROPERTY_ASSIGNMENT__PROPERTY;
+
+	/**
+	 * The feature id for the '<em><b>Value</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_ASSIGNMENT__VALUE = PROPERTY_ASSIGNMENT__VALUE;
+
+	/**
+	 * The feature id for the '<em><b>Domain Object</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_ASSIGNMENT__DOMAIN_OBJECT = PROPERTY_ASSIGNMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Domain Object Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_ASSIGNMENT_FEATURE_COUNT = PROPERTY_ASSIGNMENT_FEATURE_COUNT + 1;
 
 
 	/**
@@ -921,6 +968,39 @@ public interface SimpleLanguagePackage extends EPackage {
 	EClass getDomainObjectReference();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.ubicompforall.simplelanguage.DomainObjectReference#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.ubicompforall.simplelanguage.DomainObjectReference#getId()
+	 * @see #getDomainObjectReference()
+	 * @generated
+	 */
+	EAttribute getDomainObjectReference_Id();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.ubicompforall.simplelanguage.DomainObjectReference#getDisplayText <em>Display Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Display Text</em>'.
+	 * @see org.ubicompforall.simplelanguage.DomainObjectReference#getDisplayText()
+	 * @see #getDomainObjectReference()
+	 * @generated
+	 */
+	EAttribute getDomainObjectReference_DisplayText();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.ubicompforall.simplelanguage.DomainObjectReference#getDataType <em>Data Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Data Type</em>'.
+	 * @see org.ubicompforall.simplelanguage.DomainObjectReference#getDataType()
+	 * @see #getDomainObjectReference()
+	 * @generated
+	 */
+	EReference getDomainObjectReference_DataType();
+
+	/**
 	 * Returns the meta object for class '{@link org.ubicompforall.simplelanguage.PropertyAssignment <em>Property Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -994,6 +1074,27 @@ public interface SimpleLanguagePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getUserService_Libraries();
+
+	/**
+	 * Returns the meta object for class '{@link org.ubicompforall.simplelanguage.DomainObjectAssignment <em>Domain Object Assignment</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Domain Object Assignment</em>'.
+	 * @see org.ubicompforall.simplelanguage.DomainObjectAssignment
+	 * @generated
+	 */
+	EClass getDomainObjectAssignment();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.ubicompforall.simplelanguage.DomainObjectAssignment#getDomainObject <em>Domain Object</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Domain Object</em>'.
+	 * @see org.ubicompforall.simplelanguage.DomainObjectAssignment#getDomainObject()
+	 * @see #getDomainObjectAssignment()
+	 * @generated
+	 */
+	EReference getDomainObjectAssignment_DomainObject();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1230,6 +1331,30 @@ public interface SimpleLanguagePackage extends EPackage {
 		EClass DOMAIN_OBJECT_REFERENCE = eINSTANCE.getDomainObjectReference();
 
 		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_OBJECT_REFERENCE__ID = eINSTANCE.getDomainObjectReference_Id();
+
+		/**
+		 * The meta object literal for the '<em><b>Display Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_OBJECT_REFERENCE__DISPLAY_TEXT = eINSTANCE.getDomainObjectReference_DisplayText();
+
+		/**
+		 * The meta object literal for the '<em><b>Data Type</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_OBJECT_REFERENCE__DATA_TYPE = eINSTANCE.getDomainObjectReference_DataType();
+
+		/**
 		 * The meta object literal for the '{@link org.ubicompforall.simplelanguage.impl.PropertyAssignmentImpl <em>Property Assignment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1288,6 +1413,24 @@ public interface SimpleLanguagePackage extends EPackage {
 		 * @generated
 		 */
 		EReference USER_SERVICE__LIBRARIES = eINSTANCE.getUserService_Libraries();
+
+		/**
+		 * The meta object literal for the '{@link org.ubicompforall.simplelanguage.impl.DomainObjectAssignmentImpl <em>Domain Object Assignment</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.ubicompforall.simplelanguage.impl.DomainObjectAssignmentImpl
+		 * @see org.ubicompforall.simplelanguage.impl.SimpleLanguagePackageImpl#getDomainObjectAssignment()
+		 * @generated
+		 */
+		EClass DOMAIN_OBJECT_ASSIGNMENT = eINSTANCE.getDomainObjectAssignment();
+
+		/**
+		 * The meta object literal for the '<em><b>Domain Object</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference DOMAIN_OBJECT_ASSIGNMENT__DOMAIN_OBJECT = eINSTANCE.getDomainObjectAssignment_DomainObject();
 
 	}
 

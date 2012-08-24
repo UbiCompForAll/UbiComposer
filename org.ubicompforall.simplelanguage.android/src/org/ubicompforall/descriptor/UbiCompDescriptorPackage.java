@@ -524,14 +524,14 @@ public interface UbiCompDescriptorPackage extends EPackage {
 	int CONDITIONAL_STEP_DESC_FEATURE_COUNT = STEP_DESC_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.ubicompforall.descriptor.impl.DomObjRefDescImpl <em>Dom Obj Ref Desc</em>}' class.
+	 * The meta object id for the '{@link org.ubicompforall.descriptor.impl.DomainObjectDescImpl <em>Domain Object Desc</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.ubicompforall.descriptor.impl.DomObjRefDescImpl
-	 * @see org.ubicompforall.descriptor.impl.UbiCompDescriptorPackageImpl#getDomObjRefDesc()
+	 * @see org.ubicompforall.descriptor.impl.DomainObjectDescImpl
+	 * @see org.ubicompforall.descriptor.impl.UbiCompDescriptorPackageImpl#getDomainObjectDesc()
 	 * @generated
 	 */
-	int DOM_OBJ_REF_DESC = 4;
+	int DOMAIN_OBJECT_DESC = 4;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -540,7 +540,7 @@ public interface UbiCompDescriptorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOM_OBJ_REF_DESC__NAME = BUILDING_BLOCK_DESC__NAME;
+	int DOMAIN_OBJECT_DESC__NAME = CLASSIFIER__NAME;
 
 	/**
 	 * The feature id for the '<em><b>User Friendly Name</b></em>' attribute.
@@ -549,7 +549,7 @@ public interface UbiCompDescriptorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOM_OBJ_REF_DESC__USER_FRIENDLY_NAME = BUILDING_BLOCK_DESC__USER_FRIENDLY_NAME;
+	int DOMAIN_OBJECT_DESC__USER_FRIENDLY_NAME = CLASSIFIER__USER_FRIENDLY_NAME;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -558,34 +558,61 @@ public interface UbiCompDescriptorPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DOM_OBJ_REF_DESC__DESCRIPTION = BUILDING_BLOCK_DESC__DESCRIPTION;
+	int DOMAIN_OBJECT_DESC__DESCRIPTION = CLASSIFIER__DESCRIPTION;
 
 	/**
-	 * The feature id for the '<em><b>Properties</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Content URI</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOM_OBJ_REF_DESC__PROPERTIES = BUILDING_BLOCK_DESC__PROPERTIES;
+	int DOMAIN_OBJECT_DESC__CONTENT_URI = CLASSIFIER_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Icon Url</b></em>' attribute.
+	 * The feature id for the '<em><b>Projection</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOM_OBJ_REF_DESC__ICON_URL = BUILDING_BLOCK_DESC__ICON_URL;
+	int DOMAIN_OBJECT_DESC__PROJECTION = CLASSIFIER_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Dom Obj Ref Desc</em>' class.
+	 * The feature id for the '<em><b>Selection</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DOM_OBJ_REF_DESC_FEATURE_COUNT = BUILDING_BLOCK_DESC_FEATURE_COUNT + 0;
+	int DOMAIN_OBJECT_DESC__SELECTION = CLASSIFIER_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Selection Args</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_DESC__SELECTION_ARGS = CLASSIFIER_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Sort Order</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_DESC__SORT_ORDER = CLASSIFIER_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>Domain Object Desc</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DOMAIN_OBJECT_DESC_FEATURE_COUNT = CLASSIFIER_FEATURE_COUNT + 5;
 
 	/**
 	 * The meta object id for the '{@link org.ubicompforall.descriptor.impl.QueryDescImpl <em>Query Desc</em>}' class.
@@ -887,14 +914,69 @@ public interface UbiCompDescriptorPackage extends EPackage {
 	EClass getConditionalStepDesc();
 
 	/**
-	 * Returns the meta object for class '{@link org.ubicompforall.descriptor.DomObjRefDesc <em>Dom Obj Ref Desc</em>}'.
+	 * Returns the meta object for class '{@link org.ubicompforall.descriptor.DomainObjectDesc <em>Domain Object Desc</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Dom Obj Ref Desc</em>'.
-	 * @see org.ubicompforall.descriptor.DomObjRefDesc
+	 * @return the meta object for class '<em>Domain Object Desc</em>'.
+	 * @see org.ubicompforall.descriptor.DomainObjectDesc
 	 * @generated
 	 */
-	EClass getDomObjRefDesc();
+	EClass getDomainObjectDesc();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.ubicompforall.descriptor.DomainObjectDesc#getContentURI <em>Content URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Content URI</em>'.
+	 * @see org.ubicompforall.descriptor.DomainObjectDesc#getContentURI()
+	 * @see #getDomainObjectDesc()
+	 * @generated
+	 */
+	EAttribute getDomainObjectDesc_ContentURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.ubicompforall.descriptor.DomainObjectDesc#getProjection <em>Projection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Projection</em>'.
+	 * @see org.ubicompforall.descriptor.DomainObjectDesc#getProjection()
+	 * @see #getDomainObjectDesc()
+	 * @generated
+	 */
+	EAttribute getDomainObjectDesc_Projection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.ubicompforall.descriptor.DomainObjectDesc#getSelection <em>Selection</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Selection</em>'.
+	 * @see org.ubicompforall.descriptor.DomainObjectDesc#getSelection()
+	 * @see #getDomainObjectDesc()
+	 * @generated
+	 */
+	EAttribute getDomainObjectDesc_Selection();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.ubicompforall.descriptor.DomainObjectDesc#getSelectionArgs <em>Selection Args</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Selection Args</em>'.
+	 * @see org.ubicompforall.descriptor.DomainObjectDesc#getSelectionArgs()
+	 * @see #getDomainObjectDesc()
+	 * @generated
+	 */
+	EAttribute getDomainObjectDesc_SelectionArgs();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.ubicompforall.descriptor.DomainObjectDesc#getSortOrder <em>Sort Order</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sort Order</em>'.
+	 * @see org.ubicompforall.descriptor.DomainObjectDesc#getSortOrder()
+	 * @see #getDomainObjectDesc()
+	 * @generated
+	 */
+	EAttribute getDomainObjectDesc_SortOrder();
 
 	/**
 	 * Returns the meta object for class '{@link org.ubicompforall.descriptor.QueryDesc <em>Query Desc</em>}'.
@@ -1190,14 +1272,54 @@ public interface UbiCompDescriptorPackage extends EPackage {
 		EClass CONDITIONAL_STEP_DESC = eINSTANCE.getConditionalStepDesc();
 
 		/**
-		 * The meta object literal for the '{@link org.ubicompforall.descriptor.impl.DomObjRefDescImpl <em>Dom Obj Ref Desc</em>}' class.
+		 * The meta object literal for the '{@link org.ubicompforall.descriptor.impl.DomainObjectDescImpl <em>Domain Object Desc</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.ubicompforall.descriptor.impl.DomObjRefDescImpl
-		 * @see org.ubicompforall.descriptor.impl.UbiCompDescriptorPackageImpl#getDomObjRefDesc()
+		 * @see org.ubicompforall.descriptor.impl.DomainObjectDescImpl
+		 * @see org.ubicompforall.descriptor.impl.UbiCompDescriptorPackageImpl#getDomainObjectDesc()
 		 * @generated
 		 */
-		EClass DOM_OBJ_REF_DESC = eINSTANCE.getDomObjRefDesc();
+		EClass DOMAIN_OBJECT_DESC = eINSTANCE.getDomainObjectDesc();
+
+		/**
+		 * The meta object literal for the '<em><b>Content URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_OBJECT_DESC__CONTENT_URI = eINSTANCE.getDomainObjectDesc_ContentURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Projection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_OBJECT_DESC__PROJECTION = eINSTANCE.getDomainObjectDesc_Projection();
+
+		/**
+		 * The meta object literal for the '<em><b>Selection</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_OBJECT_DESC__SELECTION = eINSTANCE.getDomainObjectDesc_Selection();
+
+		/**
+		 * The meta object literal for the '<em><b>Selection Args</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_OBJECT_DESC__SELECTION_ARGS = eINSTANCE.getDomainObjectDesc_SelectionArgs();
+
+		/**
+		 * The meta object literal for the '<em><b>Sort Order</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DOMAIN_OBJECT_DESC__SORT_ORDER = eINSTANCE.getDomainObjectDesc_SortOrder();
 
 		/**
 		 * The meta object literal for the '{@link org.ubicompforall.descriptor.impl.QueryDescImpl <em>Query Desc</em>}' class.

@@ -125,6 +125,15 @@ public interface SimpleLanguageFactory extends EFactory {
 	UserService createUserService();
 
 	/**
+	 * Returns a new object of class '<em>Domain Object Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Domain Object Assignment</em>'.
+	 * @generated
+	 */
+	DomainObjectAssignment createDomainObjectAssignment();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

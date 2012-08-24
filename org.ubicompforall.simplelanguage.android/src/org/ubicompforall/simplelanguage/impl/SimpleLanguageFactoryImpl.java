@@ -71,6 +71,7 @@ public class SimpleLanguageFactoryImpl extends EFactoryImpl implements SimpleLan
 			case SimpleLanguagePackage.DOMAIN_OBJECT_REFERENCE: return createDomainObjectReference();
 			case SimpleLanguagePackage.PROPERTY_ASSIGNMENT: return createPropertyAssignment();
 			case SimpleLanguagePackage.USER_SERVICE: return createUserService();
+			case SimpleLanguagePackage.DOMAIN_OBJECT_ASSIGNMENT: return createDomainObjectAssignment();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -184,6 +185,16 @@ public class SimpleLanguageFactoryImpl extends EFactoryImpl implements SimpleLan
 	public UserService createUserService() {
 		UserServiceImpl userService = new UserServiceImpl();
 		return userService;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public DomainObjectAssignment createDomainObjectAssignment() {
+		DomainObjectAssignmentImpl domainObjectAssignment = new DomainObjectAssignmentImpl();
+		return domainObjectAssignment;
 	}
 
 	/**

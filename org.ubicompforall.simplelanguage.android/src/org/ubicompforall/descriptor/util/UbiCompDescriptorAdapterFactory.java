@@ -85,8 +85,8 @@ public class UbiCompDescriptorAdapterFactory extends AdapterFactoryImpl {
 				return createConditionalStepDescAdapter();
 			}
 			@Override
-			public Adapter caseDomObjRefDesc(DomObjRefDesc object) {
-				return createDomObjRefDescAdapter();
+			public Adapter caseDomainObjectDesc(DomainObjectDesc object) {
+				return createDomainObjectDescAdapter();
 			}
 			@Override
 			public Adapter caseQueryDesc(QueryDesc object) {
@@ -197,16 +197,16 @@ public class UbiCompDescriptorAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.ubicompforall.descriptor.DomObjRefDesc <em>Dom Obj Ref Desc</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.ubicompforall.descriptor.DomainObjectDesc <em>Domain Object Desc</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.ubicompforall.descriptor.DomObjRefDesc
+	 * @see org.ubicompforall.descriptor.DomainObjectDesc
 	 * @generated
 	 */
-	public Adapter createDomObjRefDescAdapter() {
+	public Adapter createDomainObjectDescAdapter() {
 		return null;
 	}
 
