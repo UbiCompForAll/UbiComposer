@@ -124,6 +124,8 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 				createFloatField(prop);
 			} else if (prop.getDataType().getName().equalsIgnoreCase("Date")) {
 				createDateField(prop);
+			} else if (prop.getDataType() instanceof DomainObjectDesc) {
+				createDomainReferenceField(prop);
 			}
 			else {
 				createStringField(prop);
@@ -295,24 +297,7 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	protected void bind(Property prop, Spinner spinner) {
 		listBindings.put(prop.getName(), spinner);		
 	}
-	
-	/**
-	 * Update a property to reflect any change done in the view
-	 * it is bound to.
-	 * @param prop The property to update
-	 */
-	protected void updatePropertyFromView(Property prop) {
-		if (prop.getDataType().getName().equals("Boolean")) {
-			boolean newValue = boolBindings.get(prop.getName()).isChecked();
-			updatePropertyWithValue(prop, Boolean.toString(newValue));
-		}
-		else {
-			String newValue = bindings.get(prop.getName()).getText().toString();
-			updatePropertyWithValue(prop, newValue);
-		}
-	}
-	
-	
+		
 	protected String stringOrNull(String theString) {
 		return theString.equals("") ? null : theString;
 	}
@@ -417,21 +402,48 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	 * Update a property by creating or updating a property 
 	 * assignment for it and setting it to the specified new value.
 	 * @param prop The property to update the value of
-	 * @param newValue The new value to set for the property
+	 * @param newValue The new value to set for the property. If the new value is null or "", 
+	 * the assignment for the property will be removed
 	 */
 	protected void updatePropertyWithValue(Property prop, String newValue) {
 		PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
 		if ((newValue != null) && (!newValue.equals(""))) {
-			if ((assign == null) || (assign instanceof PropertyReference)) {
+			
+			if (assign instanceof PropertyReference) {
+				// Remove any existing property reference, as it should be replaced with a regular property assignment
+				buildingBlock.getPropertyValues().remove(assign);
+				assign = null;
+			}
+			
+			if (assign == null) {
+				// If we do not have an assignment object, create it, set the property name, and add to the building block
 				assign = SimpleLanguageFactory.eINSTANCE.createPropertyAssignment();
 				assign.setProperty(prop.getName());
 				buildingBlock.getPropertyValues().add(assign);
 			}
+			// Finally, set the new value
 			assign.setValue(newValue);
 		}
 		else {
+			// Remove any assignment set if the new value is null or ""
 			if (assign != null)
 				buildingBlock.getPropertyValues().remove(assign);
+		}
+	}
+	
+	/**
+	 * Update a property to reflect any change done in the view
+	 * it is bound to.
+	 * @param prop The property to update
+	 */
+	protected void updatePropertyFromView(Property prop) {
+		if (prop.getDataType().getName().equals("Boolean")) {
+			boolean newValue = boolBindings.get(prop.getName()).isChecked();
+			updatePropertyWithValue(prop, Boolean.toString(newValue));
+		}
+		else {
+			String newValue = bindings.get(prop.getName()).getText().toString();
+			updatePropertyWithValue(prop, newValue);
 		}
 	}
 	
