@@ -82,6 +82,7 @@ public class EditStepActivity extends AbstractEditBuildingBlockActivity {
         // Now that the building block and building block view is set,
         // call the superclass to create editors for the properties
         createEditorsForProperties();       
+        createListOfReturnValues("Return value properties:");
     }
     
 	@Override

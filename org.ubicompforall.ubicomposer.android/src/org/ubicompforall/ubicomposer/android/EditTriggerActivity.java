@@ -73,7 +73,8 @@ public class EditTriggerActivity extends AbstractEditBuildingBlockActivity {
 
         // Now that the building block and building block view is set,
         // call the superclass to create editors for the properties
-       createEditorsForProperties();       
+       createEditorsForProperties();     
+       createListOfReturnValues("Trigger parameters:");
     }
     
 

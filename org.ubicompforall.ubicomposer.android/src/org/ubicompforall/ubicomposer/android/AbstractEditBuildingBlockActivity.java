@@ -105,15 +105,18 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	}
 	
 	/**
-	 * Creates editors for all properties of the building block
+	 * Creates editors for all properties (except return values) of the building block 
 	 * by checking the type of each property and delegating the
-	 * creation process to create... methods for the correct type
+	 * creation process to create... methods for the correct type.
 	 */
     protected void createEditorsForProperties() {		
 		BuildingBlockDesc descr = getBuildingBlock().getDescriptor();
 
 		// Go through all the properties, and create a widget for displaying and editing each of them
 		for (Property prop : descr.getProperties()) {
+			if (prop.isIsResultValue())
+				return; // Do not create editor for result values
+			
 			if (prop.getDataType().getName().equalsIgnoreCase("String")) {
 				createStringField(prop);
 			} else if (prop.getDataType().getName().equalsIgnoreCase("Boolean")) {
@@ -132,7 +135,43 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 			}
 		}   	
     }	
-	
+
+	/**
+	 * Creates a visual list of all properties that are return values of the building block,
+	 * using the provided label as a header.
+	 * @param label The text to use as a header for the list
+	 */
+    protected void createListOfReturnValues(String label) {
+    	// First add the header
+		TextView headerLabel = new TextView(this);
+		headerLabel.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
+		headerLabel.setText(label);
+		buildingBlockView.addView(headerLabel);
+
+		// Next, create a layout to contain the list of result properties
+		LinearLayout ll = new LinearLayout(this);
+		BuildingBlockDesc descr = getBuildingBlock().getDescriptor();
+		
+		boolean hasNone = true;
+		
+		// Go through the list and add labels for each property that is a result value
+		for (Property prop : descr.getProperties()) {
+			if (prop.isIsResultValue()) {
+				TextView resultLabel = new TextView(this);
+				resultLabel.setText(prop.getUserFriendlyName());
+				ll.addView(resultLabel);
+				hasNone = false;
+			}
+		}
+		if (hasNone) {
+			TextView resultLabel = new TextView(this);
+			resultLabel.setText("None available");
+			ll.addView(resultLabel);
+		}
+		buildingBlockView.addView(ll);	
+    }
+    
+    
     /**
      * Create an editor for the specified integer property and add it to the building block view
      * @param prop The property to add an editor for
@@ -437,6 +476,11 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	 * @param prop The property to update
 	 */
 	protected void updatePropertyFromView(Property prop) {
+		// References are updated directly when selecting, and must be skipped here
+		PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
+		if ((assign instanceof PropertyReference) || (assign instanceof DomainObjectReference))
+			return;
+		
 		if (prop.getDataType().getName().equals("Boolean")) {
 			boolean newValue = boolBindings.get(prop.getName()).isChecked();
 			updatePropertyWithValue(prop, Boolean.toString(newValue));
@@ -472,17 +516,21 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 
 		// Go through all the properties, and create a widget for displaying and editing each of them
 		for (Property prop : descr.getProperties()) {
-			this.updateViewFromProperty(prop);
-		}   					
+			if (!prop.isIsResultValue())
+				this.updateViewFromProperty(prop);
+		}   			
+		
+		// TODO: Consider to list return values as non-editable
 	}
 	
 	@Override
 	protected void updateModelFromViews() {
 		BuildingBlockDesc descr = getBuildingBlock().getDescriptor();
 
-		// Go through all the properties, and create a widget for displaying and editing each of them
+		// Go through all the properties, and update the property value from current value in the view
 		for (Property prop : descr.getProperties()) {
-			this.updatePropertyFromView(prop);
+			if (!prop.isIsResultValue())
+				this.updatePropertyFromView(prop);
 		}   			
 	}   	
 	
