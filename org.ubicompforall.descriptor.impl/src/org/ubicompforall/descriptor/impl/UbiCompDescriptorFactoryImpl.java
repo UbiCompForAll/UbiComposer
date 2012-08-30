@@ -61,7 +61,7 @@ public class UbiCompDescriptorFactoryImpl extends EFactoryImpl implements UbiCom
 			case UbiCompDescriptorPackage.TRIGGER_DESC: return createTriggerDesc();
 			case UbiCompDescriptorPackage.CONDITION_DESC: return createConditionDesc();
 			case UbiCompDescriptorPackage.CONDITIONAL_STEP_DESC: return createConditionalStepDesc();
-			case UbiCompDescriptorPackage.DOM_OBJ_REF_DESC: return createDomObjRefDesc();
+			case UbiCompDescriptorPackage.DOMAIN_OBJECT_DESC: return createDomainObjectDesc();
 			case UbiCompDescriptorPackage.QUERY_DESC: return createQueryDesc();
 			case UbiCompDescriptorPackage.PROPERTY: return createProperty();
 			case UbiCompDescriptorPackage.VALUE: return createValue();
@@ -118,9 +118,9 @@ public class UbiCompDescriptorFactoryImpl extends EFactoryImpl implements UbiCom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DomObjRefDesc createDomObjRefDesc() {
-		DomObjRefDescImpl domObjRefDesc = new DomObjRefDescImpl();
-		return domObjRefDesc;
+	public DomainObjectDesc createDomainObjectDesc() {
+		DomainObjectDescImpl domainObjectDesc = new DomainObjectDescImpl();
+		return domainObjectDesc;
 	}
 
 	/**

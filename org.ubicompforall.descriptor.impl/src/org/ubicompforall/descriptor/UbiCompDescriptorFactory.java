@@ -59,13 +59,13 @@ public interface UbiCompDescriptorFactory extends EFactory {
 	ConditionalStepDesc createConditionalStepDesc();
 
 	/**
-	 * Returns a new object of class '<em>Dom Obj Ref Desc</em>'.
+	 * Returns a new object of class '<em>Domain Object Desc</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Dom Obj Ref Desc</em>'.
+	 * @return a new object of class '<em>Domain Object Desc</em>'.
 	 * @generated
 	 */
-	DomObjRefDesc createDomObjRefDesc();
+	DomainObjectDesc createDomainObjectDesc();
 
 	/**
 	 * Returns a new object of class '<em>Query Desc</em>'.

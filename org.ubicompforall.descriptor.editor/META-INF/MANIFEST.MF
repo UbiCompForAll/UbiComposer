@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.ubicompforall.descriptor.editor;singleton:=true
-Bundle-Version: 0.5.1
+Bundle-Version: 0.5.3
 Bundle-ClassPath: .
 Bundle-Activator: org.ubicompforall.descriptor.presentation.UbiCompDescriptorEditorPlugin$Implementation
 Bundle-Vendor: SINTEF

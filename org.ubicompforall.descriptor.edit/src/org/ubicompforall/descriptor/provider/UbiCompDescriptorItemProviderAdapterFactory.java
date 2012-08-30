@@ -165,26 +165,26 @@ public class UbiCompDescriptorItemProviderAdapterFactory extends UbiCompDescript
 	}
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.ubicompforall.descriptor.DomObjRefDesc} instances.
+	 * This keeps track of the one adapter used for all {@link org.ubicompforall.descriptor.DomainObjectDesc} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DomObjRefDescItemProvider domObjRefDescItemProvider;
+	protected DomainObjectDescItemProvider domainObjectDescItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.ubicompforall.descriptor.DomObjRefDesc}.
+	 * This creates an adapter for a {@link org.ubicompforall.descriptor.DomainObjectDesc}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
-	public Adapter createDomObjRefDescAdapter() {
-		if (domObjRefDescItemProvider == null) {
-			domObjRefDescItemProvider = new DomObjRefDescItemProvider(this);
+	public Adapter createDomainObjectDescAdapter() {
+		if (domainObjectDescItemProvider == null) {
+			domainObjectDescItemProvider = new DomainObjectDescItemProvider(this);
 		}
 
-		return domObjRefDescItemProvider;
+		return domainObjectDescItemProvider;
 	}
 
 	/**
@@ -428,7 +428,7 @@ public class UbiCompDescriptorItemProviderAdapterFactory extends UbiCompDescript
 		if (triggerDescItemProvider != null) triggerDescItemProvider.dispose();
 		if (conditionDescItemProvider != null) conditionDescItemProvider.dispose();
 		if (conditionalStepDescItemProvider != null) conditionalStepDescItemProvider.dispose();
-		if (domObjRefDescItemProvider != null) domObjRefDescItemProvider.dispose();
+		if (domainObjectDescItemProvider != null) domainObjectDescItemProvider.dispose();
 		if (queryDescItemProvider != null) queryDescItemProvider.dispose();
 		if (propertyItemProvider != null) propertyItemProvider.dispose();
 		if (valueItemProvider != null) valueItemProvider.dispose();

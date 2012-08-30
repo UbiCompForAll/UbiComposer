@@ -102,12 +102,11 @@ public class UbiCompDescriptorSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case UbiCompDescriptorPackage.DOM_OBJ_REF_DESC: {
-				DomObjRefDesc domObjRefDesc = (DomObjRefDesc)theEObject;
-				T result = caseDomObjRefDesc(domObjRefDesc);
-				if (result == null) result = caseBuildingBlockDesc(domObjRefDesc);
-				if (result == null) result = caseClassifier(domObjRefDesc);
-				if (result == null) result = caseNamedElement(domObjRefDesc);
+			case UbiCompDescriptorPackage.DOMAIN_OBJECT_DESC: {
+				DomainObjectDesc domainObjectDesc = (DomainObjectDesc)theEObject;
+				T result = caseDomainObjectDesc(domainObjectDesc);
+				if (result == null) result = caseClassifier(domainObjectDesc);
+				if (result == null) result = caseNamedElement(domainObjectDesc);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -236,17 +235,17 @@ public class UbiCompDescriptorSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Dom Obj Ref Desc</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Domain Object Desc</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Dom Obj Ref Desc</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Domain Object Desc</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDomObjRefDesc(DomObjRefDesc object) {
+	public T caseDomainObjectDesc(DomainObjectDesc object) {
 		return null;
 	}
 

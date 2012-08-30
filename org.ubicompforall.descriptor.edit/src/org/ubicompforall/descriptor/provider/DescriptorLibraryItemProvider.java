@@ -171,7 +171,7 @@ public class DescriptorLibraryItemProvider
 		newChildDescriptors.add
 			(createChildParameter
 				(UbiCompDescriptorPackage.Literals.DESCRIPTOR_LIBRARY__BUILDING_BLOCKS,
-				 UbiCompDescriptorFactory.eINSTANCE.createDomObjRefDesc()));
+				 UbiCompDescriptorFactory.eINSTANCE.createDomainObjectDesc()));
 
 		newChildDescriptors.add
 			(createChildParameter

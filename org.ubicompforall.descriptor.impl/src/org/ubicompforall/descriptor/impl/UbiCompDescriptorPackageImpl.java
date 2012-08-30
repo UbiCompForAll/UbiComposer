@@ -16,7 +16,7 @@ import org.ubicompforall.descriptor.ConditionDesc;
 import org.ubicompforall.descriptor.ConditionalStepDesc;
 import org.ubicompforall.descriptor.DataType;
 import org.ubicompforall.descriptor.DescriptorLibrary;
-import org.ubicompforall.descriptor.DomObjRefDesc;
+import org.ubicompforall.descriptor.DomainObjectDesc;
 import org.ubicompforall.descriptor.NamedElement;
 import org.ubicompforall.descriptor.Property;
 import org.ubicompforall.descriptor.QueryDesc;
@@ -66,7 +66,7 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass domObjRefDescEClass = null;
+	private EClass domainObjectDescEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -235,8 +235,53 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDomObjRefDesc() {
-		return domObjRefDescEClass;
+	public EClass getDomainObjectDesc() {
+		return domainObjectDescEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDomainObjectDesc_ContentURI() {
+		return (EAttribute)domainObjectDescEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDomainObjectDesc_Projection() {
+		return (EAttribute)domainObjectDescEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDomainObjectDesc_Selection() {
+		return (EAttribute)domainObjectDescEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDomainObjectDesc_SelectionArgs() {
+		return (EAttribute)domainObjectDescEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDomainObjectDesc_SortOrder() {
+		return (EAttribute)domainObjectDescEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -465,7 +510,12 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 
 		conditionalStepDescEClass = createEClass(CONDITIONAL_STEP_DESC);
 
-		domObjRefDescEClass = createEClass(DOM_OBJ_REF_DESC);
+		domainObjectDescEClass = createEClass(DOMAIN_OBJECT_DESC);
+		createEAttribute(domainObjectDescEClass, DOMAIN_OBJECT_DESC__CONTENT_URI);
+		createEAttribute(domainObjectDescEClass, DOMAIN_OBJECT_DESC__PROJECTION);
+		createEAttribute(domainObjectDescEClass, DOMAIN_OBJECT_DESC__SELECTION);
+		createEAttribute(domainObjectDescEClass, DOMAIN_OBJECT_DESC__SELECTION_ARGS);
+		createEAttribute(domainObjectDescEClass, DOMAIN_OBJECT_DESC__SORT_ORDER);
 
 		queryDescEClass = createEClass(QUERY_DESC);
 
@@ -529,7 +579,7 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 		triggerDescEClass.getESuperTypes().add(this.getBuildingBlockDesc());
 		conditionDescEClass.getESuperTypes().add(this.getBuildingBlockDesc());
 		conditionalStepDescEClass.getESuperTypes().add(this.getStepDesc());
-		domObjRefDescEClass.getESuperTypes().add(this.getBuildingBlockDesc());
+		domainObjectDescEClass.getESuperTypes().add(this.getClassifier());
 		queryDescEClass.getESuperTypes().add(this.getBuildingBlockDesc());
 		buildingBlockDescEClass.getESuperTypes().add(this.getClassifier());
 		propertyEClass.getESuperTypes().add(this.getNamedElement());
@@ -547,7 +597,12 @@ public class UbiCompDescriptorPackageImpl extends EPackageImpl implements UbiCom
 
 		initEClass(conditionalStepDescEClass, ConditionalStepDesc.class, "ConditionalStepDesc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(domObjRefDescEClass, DomObjRefDesc.class, "DomObjRefDesc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(domainObjectDescEClass, DomainObjectDesc.class, "DomainObjectDesc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDomainObjectDesc_ContentURI(), ecorePackage.getEString(), "contentURI", null, 0, 1, DomainObjectDesc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainObjectDesc_Projection(), ecorePackage.getEString(), "projection", null, 0, 1, DomainObjectDesc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainObjectDesc_Selection(), ecorePackage.getEString(), "selection", null, 0, 1, DomainObjectDesc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainObjectDesc_SelectionArgs(), ecorePackage.getEString(), "selectionArgs", null, 0, 1, DomainObjectDesc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDomainObjectDesc_SortOrder(), ecorePackage.getEString(), "sortOrder", null, 0, 1, DomainObjectDesc.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(queryDescEClass, QueryDesc.class, "QueryDesc", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
