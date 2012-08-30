@@ -6,6 +6,9 @@
    <feature url="features/org.ubicompforall.ubicomppro.feature_0.2.2.jar" id="org.ubicompforall.ubicomppro.feature" version="0.2.2">
       <category name="UbiCompForAll"/>
    </feature>
+   <feature url="features/org.ubicompforall.ubicomppro.feature_0.2.3.jar" id="org.ubicompforall.ubicomppro.feature" version="0.2.3">
+      <category name="UbiCompForAll"/>
+   </feature>
    <category-def name="UbiCompForAll" label="UbiCompForAll Tools">
       <description>
          Eclipse-based tools from the UbiCompForAll project
