@@ -20,6 +20,7 @@
     <properties name="message" userFriendlyName="Message" description="The text message to send as SMS">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
     </properties>
+    <properties name="contact" userFriendlyName="contact" description="The contact to send the message to" dataType="//@buildingBlocks.5" upperBound="1"/>
   </buildingBlocks>
   <buildingBlocks xsi:type="descriptor:StepDesc" name="sendMail" userFriendlyName="Send Mail" description="Send a mail message" iconUrl="email_go.png">
     <properties name="mailAddress" userFriendlyName="Mail Address" description="The address to send the mail to">
@@ -46,4 +47,5 @@
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
     </properties>
   </buildingBlocks>
+  <buildingBlocks xsi:type="descriptor:DomainObjectDesc" name="Contact" userFriendlyName="Contact" description="Contacts from the Android contacts content provider" contentURI="content://com.android.contacts/contacts" projection="_id,display_name" selection="" selectionArgs=""/>
 </descriptor:DescriptorLibrary>

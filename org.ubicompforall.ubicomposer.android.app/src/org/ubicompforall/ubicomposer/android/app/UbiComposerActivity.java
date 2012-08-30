@@ -100,7 +100,7 @@ public class UbiComposerActivity extends Activity {
 			public void onClick(View arg0) {
 				stopRunning();
 			}} );
-        
+     	// Debug: stopButton.setText(android.provider.ContactsContract.Contacts.CONTENT_URI.toString());
     }
     
 

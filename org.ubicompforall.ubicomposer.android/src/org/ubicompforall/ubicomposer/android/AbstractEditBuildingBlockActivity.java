@@ -50,6 +50,7 @@ import android.net.Uri;
 import android.text.InputType;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -279,22 +280,30 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		fieldNameLabel.setText(prop.getUserFriendlyName());
 		buildingBlockView.addView(fieldNameLabel);
 
-		// Create a list box item
+		// Create a spinner to use for selecting the reference
 		Spinner spinner = new Spinner(this);
+		spinner.setTag(prop);
 		spinner.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		//spinner.setAdapter(adapter);
-		//spinner.setHint(prop.getDescription());
-		//PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
-		//if (assign != null) {
-			// Create binding between the widget and the value of the assignment
-		//	checkBox.setChecked(Boolean.getBoolean(assign.getValue()));
-		//} 
+	
+		// Add a listener that sets the domain object assignment
+		spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int pos, long id) {
+				Cursor curs = (Cursor)parent.getItemAtPosition(pos);				
+				setDomainObjectAssignment((Property)parent.getTag(),curs.getString(0), curs.getString(1) );				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				removeOldAssignment((Property)parent.getTag());
+			}
+		});
 		
 		buildingBlockView.addView(spinner);		
 		bind(prop, spinner);
 	}
-	
-	
 	
 	
 	Map<String, EditText> bindings = new HashMap<String, EditText>();
@@ -337,29 +346,62 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		listBindings.put(prop.getName(), spinner);		
 	}
 		
+	/**
+	 * Trims the input string and returns either a the trimmed string or null if the string was empty or null
+	 * @param theString The input string
+	 * @return null if the input is null or an empty string, otherwise the trimmed string
+	 */
 	protected String stringOrNull(String theString) {
-		return theString.equals("") ? null : theString;
+		if (theString == null)
+			return null;
+		else
+			theString = theString.trim();
+			return theString.equals("") ? null : theString.trim();
 	}
 	
 	String SPLIT_STR = "[,\\. ]";
 	
+	/**
+	 * Makes a query to a content provider to retrieve domain objects based
+	 * on the provided domain domain object descriptor. The contentURI,
+	 * projection, selection, selectionArgs and sortOrder of the descriptor
+	 * will be passed to the query, replacing any empty strings with null
+	 * in the request.  
+	 * @param domDesc The domain object descriptor
+	 * @return The cursor that can be used to access the query results 
+	 */
 	protected Cursor queryForDomainObjects(DomainObjectDesc domDesc) {
 		String selArgs[] = null;
 		if (!domDesc.getSelectionArgs().equals("")) {
 			selArgs = domDesc.getSelectionArgs().split(SPLIT_STR);
 		}
 		
+		String projectionStr = stringOrNull(domDesc.getProjection());
+		String projection[] = null;
+		if ((projectionStr != null) && (!projectionStr.equals("*"))) {
+			projection = domDesc.getProjection().split(SPLIT_STR);
+		}
+		
+		String selection = stringOrNull(domDesc.getSelection());
+		if ((selection != null) && selection.equals("*"))
+			selection = null;
 		
 		Cursor mCursor = getContentResolver().query(
 				Uri.parse(domDesc.getContentURI()),   
-			    domDesc.getProjection().split(SPLIT_STR),                        
-			    domDesc.getSelection(),                    
+			    projection,                        
+			    selection,                    
 			    selArgs,                     
 			    stringOrNull(domDesc.getSortOrder()));
 		return mCursor;
 	}
 	
 
+	/**
+	 * Helper class used for selecting which part of the data to display
+	 * in the spinner view.
+	 * @author erlend
+	 *
+	 */
 	public class DomainDataBinder implements SimpleCursorAdapter.ViewBinder {
 		@Override
 		public boolean setViewValue(View view, Cursor cursor, int columnIndex) {
@@ -376,6 +418,59 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		}
 
 	}
+
+	/**
+	 * Updates a view presenting a property that has a domain object reference
+	 * as type. The method updates the spinner view by querying the available
+	 * domain objects that can be selected, and sets the selection of the 
+	 * spinner to the currently assigned domain object (if any) 
+	 * @param prop The property to update the view of
+	 * @param assign The current assignment of domain object to the property
+	 */
+	protected void updateDomainObjectReferenceViewFromProperty(Property prop, PropertyAssignment assign) {
+
+		try {
+			// First, get the descriptor for the domain objects, and query for the available objects to select from
+			DomainObjectDesc domDesc = (DomainObjectDesc)prop.getDataType();
+			Cursor mCursor = queryForDomainObjects(domDesc);
+
+			int selectedPosition = 0;
+			boolean foundSelected = false;
+			if (assign != null) {
+				// Locate the current selection
+				DomainObjectReference domainObject = ((DomainObjectAssignment) assign).getDomainObject().get(0);
+				for (mCursor.moveToFirst(); !mCursor.isAfterLast(); mCursor.moveToNext()) {
+					if (mCursor.getString(0).equals(domainObject.getId())) {
+						foundSelected = true;
+						break;
+					}
+					selectedPosition++;
+				}
+				mCursor.moveToFirst();
+			}	
+			
+			
+			//String[] from = new String[]{domDesc.getProjection().split(SPLIT_STR)[1]}; // Use only the first column after the ID for now
+			String[] from = new String[]{mCursor.getColumnName(1)}; // Use only the first column after the ID for now
+			int[] to = new int[]{android.R.id.text1};
+			SimpleCursorAdapter adapter =
+			  new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, mCursor, from, to );
+			adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
+			adapter.setViewBinder(new DomainDataBinder());
+
+			Spinner spin = listBindings.get(prop.getName());
+			spin.setAdapter(adapter);			
+						
+			if (foundSelected) {			
+				spin.setSelection(selectedPosition);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	/**
 	 * Update the views to reflect any change done the property they
@@ -386,34 +481,7 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
 		
 		if (prop.getDataType() instanceof DomainObjectDesc) {
-			// First, get the descriptor for the domain objects, and query for the available objects to select from
-			DomainObjectDesc domDesc = (DomainObjectDesc)prop.getDataType();
-			Cursor mCursor = queryForDomainObjects(domDesc);
-
-			
-			String[] from = new String[]{"abc"}; // TODO: change this
-			int[] to = new int[]{android.R.id.text1};
-			SimpleCursorAdapter adapter =
-			  new SimpleCursorAdapter(this, android.R.layout.simple_spinner_item, mCursor, from, to );
-			adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item );
-			adapter.setViewBinder(new DomainDataBinder());
-
-			Spinner spin = listBindings.get(prop.getName());
-			spin.setAdapter(adapter);			
-			
-			
-			//DomainObjectReference refs[] = new DomainObjectReference[mCursor.getCount()];
-			//mCursor.m
-			
-			
-			if (assign != null) {
-				DomainObjectReference domainObject = ((DomainObjectAssignment) assign).getDomainObject().get(0);
-				//Spinner spin = listBindings.get(prop.getName());
-				
-				// TODO: Find position of domainObject in the adapater array, and set in setSelection()
-				//spin.setSelection(position);
-				
-			}
+			updateDomainObjectReferenceViewFromProperty(prop, assign);
 		}
 		else if (prop.getDataType().getName().equals("Boolean")) {
 			CheckBox cb = boolBindings.get(prop.getName());
@@ -445,28 +513,19 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	 * the assignment for the property will be removed
 	 */
 	protected void updatePropertyWithValue(Property prop, String newValue) {
-		PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
+		removeOldAssignment(prop);
+		
+		// There is only something to add if the new value is non-null and not an empty string
 		if ((newValue != null) && (!newValue.equals(""))) {
+			// Create a new assignment
+			PropertyAssignment assign = SimpleLanguageFactory.eINSTANCE.createPropertyAssignment();
 			
-			if (assign instanceof PropertyReference) {
-				// Remove any existing property reference, as it should be replaced with a regular property assignment
-				buildingBlock.getPropertyValues().remove(assign);
-				assign = null;
-			}
-			
-			if (assign == null) {
-				// If we do not have an assignment object, create it, set the property name, and add to the building block
-				assign = SimpleLanguageFactory.eINSTANCE.createPropertyAssignment();
-				assign.setProperty(prop.getName());
-				buildingBlock.getPropertyValues().add(assign);
-			}
-			// Finally, set the new value
+			// Set property name and value
+			assign.setProperty(prop.getName());
 			assign.setValue(newValue);
-		}
-		else {
-			// Remove any assignment set if the new value is null or ""
-			if (assign != null)
-				buildingBlock.getPropertyValues().remove(assign);
+			
+			// Finally, add to the building blocks list of property values
+			buildingBlock.getPropertyValues().add(assign);
 		}
 	}
 	
@@ -477,8 +536,10 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	 */
 	protected void updatePropertyFromView(Property prop) {
 		// References are updated directly when selecting, and must be skipped here
-		PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());
-		if ((assign instanceof PropertyReference) || (assign instanceof DomainObjectReference))
+		if (prop.getDataType() instanceof DomainObjectDesc)
+			return;
+		PropertyAssignment assign = getPropertyOfBlock(buildingBlock, prop.getName());		
+		if ((assign instanceof PropertyReference))
 			return;
 		
 		if (prop.getDataType().getName().equals("Boolean")) {
@@ -519,8 +580,6 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 			if (!prop.isIsResultValue())
 				this.updateViewFromProperty(prop);
 		}   			
-		
-		// TODO: Consider to list return values as non-editable
 	}
 	
 	@Override
@@ -534,6 +593,19 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		}   			
 	}   	
 	
+	/**
+	 * Removes the current assignment for a property from the building block
+	 * currently being edited
+	 * @param property
+	 */
+	protected void removeOldAssignment(Property property) {
+		BuildingBlock bb = getBuildingBlock();
+
+		// Remove any previous property assignment
+		PropertyAssignment oldPropAssign = this.getPropertyOfBlock(bb, property.getName());
+		if (oldPropAssign != null)
+			bb.getPropertyValues().remove(oldPropAssign);		
+	}
 	
 	/**
 	 * Set up a property reference for a property of the building block being edited.
@@ -542,25 +614,49 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	 */
 	protected void setPropertyReference(Property property, BuildingBlockAndProperty bbp) {
 		BuildingBlock bb = getBuildingBlock();
-		PropertyAssignment propAssign = this.getPropertyOfBlock(bb, property.getName());
-		PropertyReference propRef = null;
-		// First, retrieve any existing property reference or remove any regular property assignment
-		if (propAssign != null) {
-			if (propAssign instanceof PropertyReference)
-				propRef = (PropertyReference)propAssign;
-			else {
-				bb.getPropertyValues().remove(propAssign);
-			}
-		}
-		// If no existing property reference is found, create a new one and add to the building block
-		if (propRef == null) {
-			propRef = SimpleLanguageFactory.eINSTANCE.createPropertyReference();
-			bb.getPropertyValues().add(propRef);
-		}
+
+		// First, remove any previous property assignment
+		removeOldAssignment(property);
+
+		//Create a new property reference 
+		PropertyReference propRef = SimpleLanguageFactory.eINSTANCE.createPropertyReference();
 		// Finally, set the values of the property reference
 		propRef.setProperty(property.getName());
 		propRef.setFromObject(bbp.buildingBlock);
 		propRef.setFromProperty(bbp.property.getName());
+		// Finally add to the building block
+		bb.getPropertyValues().add(propRef);
+	}
+	
+	/**
+	 * Set up a domain object assignment for a property of the building block being edited.
+	 * @param property The property to set the assignment of
+	 * @param id The id of the domain object
+	 * @param displayText The text used to display the domain object to the user
+	 */
+	protected void setDomainObjectAssignment(Property property, String id, String displayText) {
+		BuildingBlock bb = getBuildingBlock();
+
+		// First, remove any previous property assignment
+		removeOldAssignment(property);
+
+		// Create a new Domain Object Assignment
+		DomainObjectAssignment propRef = SimpleLanguageFactory.eINSTANCE.createDomainObjectAssignment();
+		
+		// Create a domain object reference for the domain object to refer to
+		DomainObjectReference ref = SimpleLanguageFactory.eINSTANCE.createDomainObjectReference();
+
+		// Set values of domain object reference
+		ref.setDataType((DomainObjectDesc)property.getDataType());
+		ref.setDisplayText(displayText);
+		ref.setId(id);
+		
+		// Set values of domain object assignment		
+		propRef.setProperty(property.getName());
+		propRef.getDomainObject().add(ref);
+
+		// Add property reference
+		bb.getPropertyValues().add(propRef);		
 	}
 	
 	
@@ -683,26 +779,8 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	}
 	
 	
-	/*
-	 * Retrieving references to domain objects
-	 * 
-	 * What is minimally needed:
-	 * - reference (id etc) to the domain object
-	 * - display name to show to the user
-	 * 
-	 * 
-	 * If we use Content providers:
-	 * - URI:  to content provider (table)
-	 * - String: projection string (column, select statement)
-	 * - Selection: (where clause)
-	 * - selectionArgs: ???
-	 * - sortOrder
-	 * 
-	 */
-	
-	
-	
 	//TODO: Implement property references for booleans
 	//TODO: Consider isResultValue etc. in property reference code
 	//TODO: Update code for to/from model
+	//TODO: Handle multiple cardinality
 }
