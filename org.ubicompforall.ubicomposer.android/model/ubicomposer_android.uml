@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Model xmi:version="20110701" xmlns:xmi="http://www.omg.org/spec/XMI/20110701" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_sjOtkPNQEeGRNYKT0cNofw" name="Model">
+  <ownedComment xmi:id="_mWdXkPN3EeGRNYKT0cNofw">
+    <body>TaskTrigger renamed to TaskInvoker</body>
+  </ownedComment>
+  <packageImport xmi:id="_sjOtkfNQEeGRNYKT0cNofw">
+    <importedPackage xmi:type="uml:Model" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#_0"/>
+  </packageImport>
+  <packagedElement xmi:type="uml:Class" xmi:id="_xjxPQPNQEeGRNYKT0cNofw" name="Activity"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_yholsPNQEeGRNYKT0cNofw" clientDependency="_vysBQPNSEeGRNYKT0cNofw" name="AbstractUbiComposerActivity">
+    <generalization xmi:id="_3qmDkPNQEeGRNYKT0cNofw" general="_xjxPQPNQEeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_07DUIPNQEeGRNYKT0cNofw" name="AbstractEditBuildingBlockActivity">
+    <generalization xmi:id="_3ClBUPNQEeGRNYKT0cNofw" general="_yholsPNQEeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_40SPgPNQEeGRNYKT0cNofw" name="EditStepActivity">
+    <generalization xmi:id="_7AbW8PNQEeGRNYKT0cNofw" general="_07DUIPNQEeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_7tXVcPNQEeGRNYKT0cNofw" name="EditTriggerActivity">
+    <generalization xmi:id="_9dmkAPNQEeGRNYKT0cNofw" general="_07DUIPNQEeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Ex5RAPNREeGRNYKT0cNofw" clientDependency="_xflA4PNSEeGRNYKT0cNofw" name="ModelUtils"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_GmhQUPNREeGRNYKT0cNofw" clientDependency="_emVqAPNSEeGRNYKT0cNofw _IudRkPNvEeGRNYKT0cNofw _LhTMoPNvEeGRNYKT0cNofw _aFU2wPNvEeGRNYKT0cNofw" name="TaskActivity">
+    <generalization xmi:id="_ogk7APNREeGRNYKT0cNofw" general="_yholsPNQEeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_H2_ZsPNREeGRNYKT0cNofw" clientDependency="_h5ljcPNSEeGRNYKT0cNofw _GGcGcPNvEeGRNYKT0cNofw _bDcr4PNvEeGRNYKT0cNofw _F-V9kPNzEeGRNYKT0cNofw" name="TaskListActivity">
+    <generalization xmi:id="_n74SgPNREeGRNYKT0cNofw" general="_yholsPNQEeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_MlphMPNREeGRNYKT0cNofw" name="TaskListAdapter">
+    <generalization xmi:id="_Y78vgPNREeGRNYKT0cNofw" general="_RhS70PNREeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_NeFlEPNREeGRNYKT0cNofw" name="BuildingBlockDescListAdapter">
+    <generalization xmi:id="_ZcIrcPNREeGRNYKT0cNofw" general="_RhS70PNREeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_RhS70PNREeGRNYKT0cNofw" name="ArrayAdapter"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Xal1APNSEeGRNYKT0cNofw" name="DescriptorLibraryUtils"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_Ypc00PNSEeGRNYKT0cNofw" name="UserServiceUtils"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_emVqAPNSEeGRNYKT0cNofw" name="Usage1" client="_GmhQUPNREeGRNYKT0cNofw" supplier="_Xal1APNSEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_h5ljcPNSEeGRNYKT0cNofw" name="Usage2" client="_H2_ZsPNREeGRNYKT0cNofw" supplier="_Xal1APNSEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_vysBQPNSEeGRNYKT0cNofw" name="Usage3" client="_yholsPNQEeGRNYKT0cNofw" supplier="_Ypc00PNSEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_xflA4PNSEeGRNYKT0cNofw" name="Usage4" client="_Ex5RAPNREeGRNYKT0cNofw" supplier="_Ypc00PNSEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_GGcGcPNvEeGRNYKT0cNofw" name="Usage5" client="_H2_ZsPNREeGRNYKT0cNofw" supplier="_GmhQUPNREeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_IudRkPNvEeGRNYKT0cNofw" name="Usage6" client="_GmhQUPNREeGRNYKT0cNofw" supplier="_40SPgPNQEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_LhTMoPNvEeGRNYKT0cNofw" name="Usage7" client="_GmhQUPNREeGRNYKT0cNofw" supplier="_7tXVcPNQEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_aFU2wPNvEeGRNYKT0cNofw" name="Usage8" client="_GmhQUPNREeGRNYKT0cNofw" supplier="_NeFlEPNREeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_bDcr4PNvEeGRNYKT0cNofw" name="Usage9" client="_H2_ZsPNREeGRNYKT0cNofw" supplier="_MlphMPNREeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Usage" xmi:id="_F-V9kPNzEeGRNYKT0cNofw" name="Usage10" client="_H2_ZsPNREeGRNYKT0cNofw" supplier="_NeFlEPNREeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_8umbEPNzEeGRNYKT0cNofw" name="BuildingBlockFactory"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_wJNV8PN1EeGRNYKT0cNofw" clientDependency="_BeZOMPN4EeGRNYKT0cNofw" name="AbstractStepIntstance"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_x-5sQPN1EeGRNYKT0cNofw" name="BuildingBlockInstance"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_zlyxkPN1EeGRNYKT0cNofw" clientDependency="_8t56sPN3EeGRNYKT0cNofw" name="CompositeBuildingBlockFactory"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_3Gdb8PN1EeGRNYKT0cNofw" name="ConditionInstance">
+    <generalization xmi:id="_zuUJgPN3EeGRNYKT0cNofw" general="_x-5sQPN1EeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_44uDwPN1EeGRNYKT0cNofw" clientDependency="_762GEPN3EeGRNYKT0cNofw" name="MapBasedBuildingBlockFactory"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_9K8t8PN1EeGRNYKT0cNofw" clientDependency="_OjwFcPN5EeGRNYKT0cNofw" name="RuntimeEnvironment">
+    <ownedAttribute xmi:id="_pPXMcPN5EeGRNYKT0cNofw" name="taskInstance" type="_ADzKYPN2EeGRNYKT0cNofw" aggregation="shared" association="_pPXzgPN5EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pPXMcfN5EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pPXMcvN5EeGRNYKT0cNofw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_-VnxUPN1EeGRNYKT0cNofw" name="StepInstance">
+    <generalization xmi:id="_wqE8cPN3EeGRNYKT0cNofw" general="_x-5sQPN1EeGRNYKT0cNofw"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_ADzKYPN2EeGRNYKT0cNofw" name="TaskInstance">
+    <ownedAttribute xmi:id="_ZfoHsPN6EeGRNYKT0cNofw" name="conditionInstance" type="_3Gdb8PN1EeGRNYKT0cNofw" association="_ZfoHs_N6EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZfoHsfN6EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZfoHsvN6EeGRNYKT0cNofw" value="1"/>
+    </ownedAttribute>
+    <ownedAttribute xmi:id="_acSkQPN6EeGRNYKT0cNofw" name="stepInstance" type="_-VnxUPN1EeGRNYKT0cNofw" association="_acSkQ_N6EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_acSkQfN6EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_acSkQvN6EeGRNYKT0cNofw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Class" xmi:id="_BCdyEPN2EeGRNYKT0cNofw" name="TaskInvoker"/>
+  <packagedElement xmi:type="uml:Class" xmi:id="_CmgXsPN2EeGRNYKT0cNofw" name="TriggerMonitor">
+    <generalization xmi:id="_xd5mEPN3EeGRNYKT0cNofw" general="_x-5sQPN1EeGRNYKT0cNofw"/>
+    <ownedAttribute xmi:id="_FS2h0PN5EeGRNYKT0cNofw" name="taskInvoker" type="_BCdyEPN2EeGRNYKT0cNofw" association="_FS3v8PN5EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FS2h0fN5EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FS2h0vN5EeGRNYKT0cNofw" value="1"/>
+    </ownedAttribute>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_762GEPN3EeGRNYKT0cNofw" name="Realization1" client="_44uDwPN1EeGRNYKT0cNofw" supplier="_8umbEPNzEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_8t56sPN3EeGRNYKT0cNofw" name="Realization2" client="_zlyxkPN1EeGRNYKT0cNofw" supplier="_8umbEPNzEeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_BeZOMPN4EeGRNYKT0cNofw" name="Realization3" client="_wJNV8PN1EeGRNYKT0cNofw" supplier="_-VnxUPN1EeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_FS3v8PN5EeGRNYKT0cNofw" name="triggerMonitor_taskInvoker_1" memberEnd="_FS3v8fN5EeGRNYKT0cNofw _FS2h0PN5EeGRNYKT0cNofw">
+    <ownedEnd xmi:id="_FS3v8fN5EeGRNYKT0cNofw" name="triggerMonitor" type="_CmgXsPN2EeGRNYKT0cNofw" association="_FS3v8PN5EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_FS3v8vN5EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_FS3v8_N5EeGRNYKT0cNofw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Realization" xmi:id="_OjwFcPN5EeGRNYKT0cNofw" name="Realization4" client="_9K8t8PN1EeGRNYKT0cNofw" supplier="_BCdyEPN2EeGRNYKT0cNofw"/>
+  <packagedElement xmi:type="uml:Association" xmi:id="_pPXzgPN5EeGRNYKT0cNofw" name="runtimeEnvironment_taskInstance_1" memberEnd="_pPXzgfN5EeGRNYKT0cNofw _pPXMcPN5EeGRNYKT0cNofw" navigableOwnedEnd="_pPXzgfN5EeGRNYKT0cNofw">
+    <ownedEnd xmi:id="_pPXzgfN5EeGRNYKT0cNofw" name="runtimeEnvironment" type="_9K8t8PN1EeGRNYKT0cNofw" association="_pPXzgPN5EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_pPXzgvN5EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_pPXzg_N5EeGRNYKT0cNofw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_ZfoHs_N6EeGRNYKT0cNofw" name="taskInstance_conditionInstance_1" memberEnd="_ZfoHtPN6EeGRNYKT0cNofw _ZfoHsPN6EeGRNYKT0cNofw">
+    <ownedEnd xmi:id="_ZfoHtPN6EeGRNYKT0cNofw" name="taskInstance" type="_ADzKYPN2EeGRNYKT0cNofw" association="_ZfoHs_N6EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_ZfoHtfN6EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_ZfoHtvN6EeGRNYKT0cNofw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Association" xmi:id="_acSkQ_N6EeGRNYKT0cNofw" name="taskInstance_stepInstance_1" memberEnd="_acSkRPN6EeGRNYKT0cNofw _acSkQPN6EeGRNYKT0cNofw">
+    <ownedEnd xmi:id="_acSkRPN6EeGRNYKT0cNofw" name="taskInstance" type="_ADzKYPN2EeGRNYKT0cNofw" association="_acSkQ_N6EeGRNYKT0cNofw">
+      <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_acSkRfN6EeGRNYKT0cNofw" value="1"/>
+      <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_acSkRvN6EeGRNYKT0cNofw" value="1"/>
+    </ownedEnd>
+  </packagedElement>
+</uml:Model>

@@ -225,23 +225,29 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 		ImageButton button = new ImageButton(this);
 		button.setImageResource(R.drawable.link_add_icon);
 		button.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-		button.setOnClickListener(new ImageButton.OnClickListener() {
+		if (prop.isCanReferToOther()) {
+			button.setOnClickListener(new ImageButton.OnClickListener() {
 
-			@Override
-			public void onClick(View arg0) {
-				if (bindings.get(prop.getName()).isEnabled()) {
-					// If the text was enabled, proceed to show dialog and select property reference
-					setCurrentDialogProperty(prop);
-					showDialog(SELECT_PROPERTY_REF);
+				@Override
+				public void onClick(View arg0) {
+					if (bindings.get(prop.getName()).isEnabled()) {
+						// If the text was enabled, proceed to show dialog and
+						// select property reference
+						setCurrentDialogProperty(prop);
+						showDialog(SELECT_PROPERTY_REF);
+					} else {
+						// If the text was not enabled, there is an existing
+						// property reference. Remove
+						// the old reference, and update the view.
+						updatePropertyWithValue(prop, null);
+						updateViewFromProperty(prop);
+					}
 				}
-				else {
-					// If the text was not enabled, there is an existing property reference. Remove
-					// the old reference, and update the view.
-					updatePropertyWithValue(prop, null);
-					updateViewFromProperty(prop);
-				}
-			}});
-		
+			});
+		} else {
+			// Disable the button if the this property can not refer to other properties
+			button.setEnabled(false);
+		}
 		LinearLayout ll = new LinearLayout(this);
 		ll.addView(button);
 		ll.addView(editText);
@@ -781,6 +787,8 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	
 	//TODO: Implement property references for booleans
 	//TODO: Consider isResultValue etc. in property reference code
-	//TODO: Update code for to/from model
 	//TODO: Handle multiple cardinality
+
+	// Consider to improve an simplify this code by making separate classes
+	// for the different datatypes, and making it extensible
 }
