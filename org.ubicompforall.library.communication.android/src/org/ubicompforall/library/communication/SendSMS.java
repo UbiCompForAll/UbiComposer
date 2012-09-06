@@ -35,10 +35,10 @@ import android.telephony.SmsManager;
 public class SendSMS extends AbstractStepInstance implements AndroidBuildingBlockInstance {
 	Context context;
 	
+
 	@Override
-	public int execute(TaskInstance context, Map<String, Object> parameters) {
-		sendSMS(getStringValue("phoneNumber", parameters), getStringValue("message", parameters));
-		return 0;
+	public void execute() {
+		sendSMS(getStringPropertyValue("phoneNumber"), getStringPropertyValue("message"));		
 	}
 	
 	private void sendSMS(String phoneNumber, String message) {
@@ -65,6 +65,5 @@ public class SendSMS extends AbstractStepInstance implements AndroidBuildingBloc
 	public void setContext(Context context) {
 		this.context = context;
 	}
-
 
 }

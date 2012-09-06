@@ -38,9 +38,8 @@ public class PlaySound extends AbstractStepInstance implements
 	Context context;
 
 	@Override
-	public int execute(TaskInstance context, Map<String, Object> parameters) {
+	public void execute() {
 		playSound("test"); // TODO replace by a sound reference or value from component
-		return 0;
 	}
 
 	

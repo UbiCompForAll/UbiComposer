@@ -25,8 +25,10 @@ package org.ubicompforall.library.communication;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.ubicompforall.simplelanguage.BuildingBlock;
 import org.ubicompforall.simplelanguage.Task;
-import org.ubicompforall.simplelanguage.runtime.TaskTrigger;
+import org.ubicompforall.simplelanguage.runtime.BuildingBlockInstanceHelper;
+import org.ubicompforall.simplelanguage.runtime.TaskInvoker;
 import org.ubicompforall.simplelanguage.runtime.TriggerMonitor;
 import org.ubicompforall.simplelanguage.runtime.android.AndroidBuildingBlockInstance;
 
@@ -37,17 +39,18 @@ import android.content.IntentFilter;
 import android.telephony.TelephonyManager;
 
 public class IncommingCallMonitor extends BroadcastReceiver implements TriggerMonitor, AndroidBuildingBlockInstance {
-	TaskTrigger taskTrigger;
+	TaskInvoker taskInvoker;
 	Task task;
 	Context context;
+	BuildingBlockInstanceHelper helper;
 
 	public void setContext(Context context) {
 		this.context = context;
 	}	
 	
 	@Override
-	public void startMonitoring(Task task, TaskTrigger taskTrigger) {
-		this.taskTrigger = taskTrigger;
+	public void startMonitoring(Task task, TaskInvoker taskInvoker) {
+		this.taskInvoker = taskInvoker;
 		this.task = task;
 		context.registerReceiver(this, new IntentFilter("android.intent.action.PHONE_STATE"));
 	}
@@ -61,11 +64,15 @@ public class IncommingCallMonitor extends BroadcastReceiver implements TriggerMo
 	public void onReceive(Context context, Intent intent) {
 		String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE); 
 		 if (TelephonyManager.EXTRA_STATE_RINGING.equals(state)) { 
-			 Map<String, Object> parameterMap = new HashMap<String, Object>();
 			 String phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
-			 parameterMap.put(task.getTrigger().getName() + ".phoneNumber", phoneNumber);
-			 taskTrigger.invokeTask(task, parameterMap);
+			 helper.setPropertyValue("phoneNumber", phoneNumber);
+			 taskInvoker.invokeTask(task, helper.createTaskParameterMap());
 		 }
+	}
+
+	@Override
+	public void setBuildingBlock(BuildingBlock buildingBlock) {
+		helper = new BuildingBlockInstanceHelper(buildingBlock);
 	}
 
 }

@@ -39,9 +39,8 @@ public class SendMail extends AbstractStepInstance implements AndroidBuildingBlo
 	}
 
 	@Override
-	public int execute(TaskInstance context, Map<String, Object> parameters) {
-		sendMail(getStringValue("mailAddress", parameters), getStringValue("subject", parameters), getStringValue("message", parameters));
-		return 0;
+	public void execute() {
+		sendMail(getStringPropertyValue("mailAddress"), getStringPropertyValue("subject"), getStringPropertyValue("message"));
 	}
 	
 	private void sendMail(String address, String subject, String message) {

@@ -25,8 +25,10 @@ package org.ubicompforall.library.communication;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.ubicompforall.simplelanguage.BuildingBlock;
 import org.ubicompforall.simplelanguage.Task;
-import org.ubicompforall.simplelanguage.runtime.TaskTrigger;
+import org.ubicompforall.simplelanguage.runtime.BuildingBlockInstanceHelper;
+import org.ubicompforall.simplelanguage.runtime.TaskInvoker;
 import org.ubicompforall.simplelanguage.runtime.TriggerMonitor;
 import org.ubicompforall.simplelanguage.runtime.android.AndroidBuildingBlockInstance;
 
@@ -38,17 +40,18 @@ import android.os.Bundle;
 import android.telephony.SmsMessage;
 
 public class SMSReceived extends BroadcastReceiver implements TriggerMonitor, AndroidBuildingBlockInstance{
-	TaskTrigger taskTrigger;
+	TaskInvoker taskInvoker;
 	Task task;
 	Context context;
+	BuildingBlockInstanceHelper helper;
 
 	public void setContext(Context context) {
 		this.context = context;
 	}	
 	
 	@Override
-	public void startMonitoring(Task task, TaskTrigger taskTrigger) {
-		this.taskTrigger = taskTrigger;
+	public void startMonitoring(Task task, TaskInvoker taskInvoker) {
+		this.taskInvoker = taskInvoker;
 		this.task = task;
 		context.registerReceiver(this, new IntentFilter("android.provider.Telephony.SMS_RECEIVED"));
 	}
@@ -71,12 +74,15 @@ public class SMSReceived extends BroadcastReceiver implements TriggerMonitor, An
 			}
 			String phoneNumber = smsMessage[0].getDisplayOriginatingAddress();
 			String message = smsMessage[0].getMessageBody();
-
-			Map<String, Object> parameterMap = new HashMap<String, Object>();
-			parameterMap.put(task.getTrigger().getName() + ".phoneNumber", phoneNumber);
-			parameterMap.put(task.getTrigger().getName() + ".message", message);
-			taskTrigger.invokeTask(task, parameterMap);
+			helper.setPropertyValue("phoneNumber", phoneNumber);
+			helper.setPropertyValue("message", message);
+			taskInvoker.invokeTask(task, helper.createTaskParameterMap());
 		}
+	}
+
+	@Override
+	public void setBuildingBlock(BuildingBlock buildingBlock) {
+		helper = new BuildingBlockInstanceHelper(buildingBlock);
 	}
 
 }

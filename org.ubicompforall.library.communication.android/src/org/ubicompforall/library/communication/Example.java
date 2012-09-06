@@ -36,9 +36,8 @@ public class Example extends AbstractStepInstance implements AndroidBuildingBloc
 	Context context;
 	
 	@Override
-	public int execute(TaskInstance context, Map<String, Object> parameters) {
-		doExample(getPropertyValue("theBool", parameters), getStringValue("theNumber", parameters), getStringValue("theDate", parameters), getStringValue("theString", parameters));
-		return 0;
+	public void execute() {
+		doExample(getPropertyValue("theBool"), getStringPropertyValue("theNumber"), getStringPropertyValue("theDate"), getStringPropertyValue("theString"));
 	}
 	
 	private void doExample(Object theBool, String theNumber, String theDate, String theString) {

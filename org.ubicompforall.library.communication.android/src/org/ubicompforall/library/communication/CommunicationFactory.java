@@ -25,6 +25,7 @@ package org.ubicompforall.library.communication;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.ubicompforall.simplelanguage.BuildingBlock;
 import org.ubicompforall.simplelanguage.runtime.BuildingBlockInstance;
 import org.ubicompforall.simplelanguage.runtime.MapBasedBuildingBlockFactory;
 import org.ubicompforall.simplelanguage.runtime.android.AndroidBuildingBlockFactory;
@@ -36,9 +37,8 @@ public class CommunicationFactory extends MapBasedBuildingBlockFactory implement
 	Context context;
 	
 	@Override
-	public BuildingBlockInstance createBuildingBlock(String buildingBlockName) {
-		// TODO Auto-generated method stub
-		BuildingBlockInstance inst = super.createBuildingBlock(buildingBlockName);
+	public BuildingBlockInstance createBuildingBlock(BuildingBlock buildingBlock) {
+		BuildingBlockInstance inst = super.createBuildingBlock(buildingBlock);
 		if (inst instanceof AndroidBuildingBlockInstance)
 			((AndroidBuildingBlockInstance)inst).setContext(context);
 		return inst;
