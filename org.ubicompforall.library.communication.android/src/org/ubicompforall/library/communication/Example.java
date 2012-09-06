@@ -22,10 +22,7 @@
  */
 package org.ubicompforall.library.communication;
 
-import java.util.Map;
-
 import org.ubicompforall.simplelanguage.runtime.AbstractStepInstance;
-import org.ubicompforall.simplelanguage.runtime.TaskInstance;
 import org.ubicompforall.simplelanguage.runtime.android.AndroidBuildingBlockInstance;
 
 import android.content.Context;

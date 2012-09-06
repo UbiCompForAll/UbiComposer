@@ -22,9 +22,6 @@
  */
 package org.ubicompforall.library.communication;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.ubicompforall.simplelanguage.BuildingBlock;
 import org.ubicompforall.simplelanguage.Task;
 import org.ubicompforall.simplelanguage.runtime.BuildingBlockInstanceHelper;
