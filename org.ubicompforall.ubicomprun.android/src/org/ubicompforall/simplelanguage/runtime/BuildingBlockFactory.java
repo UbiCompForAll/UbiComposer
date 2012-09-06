@@ -22,14 +22,26 @@
  */
 package org.ubicompforall.simplelanguage.runtime;
 
+import org.ubicompforall.simplelanguage.BuildingBlock;
+import org.ubicompforall.simplelanguage.Condition;
+import org.ubicompforall.simplelanguage.Step;
+import org.ubicompforall.simplelanguage.Trigger;
+
 public interface BuildingBlockFactory {
 
-	public BuildingBlockInstance createBuildingBlock(String buildingBlockName);
+	/**
+	 * Create an instance of a building block based on the descriptor provided.
+	 * The new building block will be initialized with a call to setBuildingBlock
+	 * before the instance is returned from the factory. 
+	 * @param buildingBlock
+	 * @return The new building block instance, with its buildingBlock property set
+	 */
+	public BuildingBlockInstance createBuildingBlock(BuildingBlock buildingBlock);
 	
-	public StepInstance createStep(String stepName);
+	public StepInstance createStep(Step step);
 	
-	public ConditionInstance createCondition(String condition);
+	public ConditionInstance createCondition(Condition condition);
 	
-	public TriggerMonitor createTriggerMonitor(String triggerName);
+	public TriggerMonitor createTriggerMonitor(Trigger trigger);
 
 }

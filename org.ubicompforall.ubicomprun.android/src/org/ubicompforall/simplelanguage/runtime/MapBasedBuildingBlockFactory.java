@@ -25,6 +25,10 @@ package org.ubicompforall.simplelanguage.runtime;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.ubicompforall.simplelanguage.BuildingBlock;
+import org.ubicompforall.simplelanguage.Condition;
+import org.ubicompforall.simplelanguage.Step;
+import org.ubicompforall.simplelanguage.Trigger;
 import org.ubicompforall.simplelanguage.runtime.BuildingBlockFactory;
 import org.ubicompforall.simplelanguage.runtime.BuildingBlockInstance;
 import org.ubicompforall.simplelanguage.runtime.ConditionInstance;
@@ -41,11 +45,12 @@ public class MapBasedBuildingBlockFactory implements BuildingBlockFactory {
 	
 	
 	@Override
-	public BuildingBlockInstance createBuildingBlock(String buildingBlockName) {
-		Class<? extends BuildingBlockInstance> cls = classMap.get(buildingBlockName);
+	public BuildingBlockInstance createBuildingBlock(BuildingBlock buildingBlock) {
+		Class<? extends BuildingBlockInstance> cls = classMap.get(buildingBlock.getDescriptor().getName());
 		if (cls != null) {
 			try {
-				return (BuildingBlockInstance)cls.newInstance();
+				BuildingBlockInstance bb = (BuildingBlockInstance)cls.newInstance();
+				bb.setBuildingBlock(buildingBlock);
 			} catch (InstantiationException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
@@ -56,8 +61,8 @@ public class MapBasedBuildingBlockFactory implements BuildingBlockFactory {
 	}
 
 	@Override
-	public StepInstance createStep(String stepName) {
-		BuildingBlockInstance bb = createBuildingBlock(stepName);
+	public StepInstance createStep(Step step) {
+		BuildingBlockInstance bb = createBuildingBlock(step);
 		if (bb != null)
 			return (StepInstance)bb;
 		else
@@ -65,7 +70,7 @@ public class MapBasedBuildingBlockFactory implements BuildingBlockFactory {
 	}
 
 	@Override
-	public ConditionInstance createCondition(String condition) {
+	public ConditionInstance createCondition(Condition condition) {
 		BuildingBlockInstance bb = createBuildingBlock(condition);
 		if (bb != null)
 			return (ConditionInstance)bb;
@@ -74,8 +79,8 @@ public class MapBasedBuildingBlockFactory implements BuildingBlockFactory {
 	}
 
 	@Override
-	public TriggerMonitor createTriggerMonitor(String triggerName) {
-		BuildingBlockInstance bb = createBuildingBlock(triggerName);
+	public TriggerMonitor createTriggerMonitor(Trigger trigger) {
+		BuildingBlockInstance bb = createBuildingBlock(trigger);
 		if (bb != null)
 			return (TriggerMonitor)bb;
 		else

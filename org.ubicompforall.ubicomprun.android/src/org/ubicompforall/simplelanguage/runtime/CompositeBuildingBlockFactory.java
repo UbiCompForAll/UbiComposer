@@ -25,6 +25,11 @@ package org.ubicompforall.simplelanguage.runtime;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.ubicompforall.simplelanguage.BuildingBlock;
+import org.ubicompforall.simplelanguage.Condition;
+import org.ubicompforall.simplelanguage.Step;
+import org.ubicompforall.simplelanguage.Trigger;
+
 public class CompositeBuildingBlockFactory implements BuildingBlockFactory {
 	protected List<BuildingBlockFactory> factories = new ArrayList<BuildingBlockFactory>();
 
@@ -36,9 +41,9 @@ public class CompositeBuildingBlockFactory implements BuildingBlockFactory {
 	}	
 	
 	@Override
-	public BuildingBlockInstance createBuildingBlock(String buildingBlockName) {
+	public BuildingBlockInstance createBuildingBlock(BuildingBlock buildingBlock) {
 		for (BuildingBlockFactory factory : factories) {
-			BuildingBlockInstance instance = factory.createBuildingBlock(buildingBlockName);
+			BuildingBlockInstance instance = factory.createBuildingBlock(buildingBlock);
 			if (instance != null) {
 				return instance;
 			}			
@@ -47,9 +52,9 @@ public class CompositeBuildingBlockFactory implements BuildingBlockFactory {
 	}
 
 	@Override
-	public StepInstance createStep(String stepName) {
+	public StepInstance createStep(Step step) {
 		for (BuildingBlockFactory factory : factories) {
-			StepInstance instance = factory.createStep(stepName);
+			StepInstance instance = factory.createStep(step);
 			if (instance != null) {
 				return instance;
 			}			
@@ -58,7 +63,7 @@ public class CompositeBuildingBlockFactory implements BuildingBlockFactory {
 	}
 
 	@Override
-	public ConditionInstance createCondition(String condition) {
+	public ConditionInstance createCondition(Condition condition) {
 		for (BuildingBlockFactory factory : factories) {
 			ConditionInstance instance = factory.createCondition(condition);
 			if (instance != null) {
@@ -69,9 +74,9 @@ public class CompositeBuildingBlockFactory implements BuildingBlockFactory {
 	}
 	
 	@Override
-	public TriggerMonitor createTriggerMonitor(String triggerName) {
+	public TriggerMonitor createTriggerMonitor(Trigger trigger) {
 		for (BuildingBlockFactory factory : factories) {
-			TriggerMonitor instance = factory.createTriggerMonitor(triggerName);
+			TriggerMonitor instance = factory.createTriggerMonitor(trigger);
 			if (instance != null) {
 				return instance;
 			}			

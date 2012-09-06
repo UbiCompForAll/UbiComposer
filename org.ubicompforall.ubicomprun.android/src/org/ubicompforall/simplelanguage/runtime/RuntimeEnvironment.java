@@ -66,7 +66,7 @@ public class RuntimeEnvironment implements TaskInvoker {
 			//TODO: Add warning message
 			return;
 		}
-		TriggerMonitor monitor = factory.createTriggerMonitor(task.getTrigger().getDescriptor().getName());
+		TriggerMonitor monitor = factory.createTriggerMonitor(task.getTrigger());
 		if (monitor != null) {
 			monitoredTasks.put(task.getName(), monitor);
 			monitor.startMonitoring(task, this);

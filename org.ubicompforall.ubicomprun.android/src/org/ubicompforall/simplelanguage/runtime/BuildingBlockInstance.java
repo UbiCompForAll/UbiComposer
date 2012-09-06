@@ -22,6 +22,20 @@
  */
 package org.ubicompforall.simplelanguage.runtime;
 
-public interface BuildingBlockInstance {
+import org.ubicompforall.simplelanguage.BuildingBlock;
 
+public interface BuildingBlockInstance {
+	/**
+	 * Sets the BuildingBlock from the composition for which this
+	 * BuildingBlockInstance is an instance
+	 * @param buildingBlock
+	 */
+	public void setBuildingBlock(BuildingBlock buildingBlock);
+
+	/**
+	 * Get the BuildingBlock from the composition for which this
+	 * BuildingBlockInstance is an instance
+	 * @return The BuildingBlock
+	 */
+	public BuildingBlock getBuildingBlock();
 }

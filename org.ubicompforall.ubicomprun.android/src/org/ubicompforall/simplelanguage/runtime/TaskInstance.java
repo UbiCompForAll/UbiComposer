@@ -116,7 +116,7 @@ public class TaskInstance {
 	
 	
 	protected void performQuery(Query query) {
-		StepInstance inst = environment.getBuildingBlockFactory().createStep(query.getDescriptor().getName());
+		StepInstance inst = environment.getBuildingBlockFactory().createStep(query);
 		if (inst != null) {
 			inst.execute(this, parameters);
 		}
@@ -126,7 +126,7 @@ public class TaskInstance {
 	}
 	
 	protected void performStep(Step step) {
-		StepInstance inst = environment.getBuildingBlockFactory().createStep(step.getDescriptor().getName());
+		StepInstance inst = environment.getBuildingBlockFactory().createStep(step);
 		if (inst != null) {
 			inst.setStep(step);
 			inst.execute(this, parameters);
@@ -153,7 +153,7 @@ public class TaskInstance {
 	
 	
 	protected boolean checkCondition(Condition condition) {
-		ConditionInstance inst = environment.getBuildingBlockFactory().createCondition(condition.getDescriptor().getName());
+		ConditionInstance inst = environment.getBuildingBlockFactory().createCondition(condition);
 		if (inst != null) {
 			inst.setCondition(condition);
 			return inst.check(this, parameters);
