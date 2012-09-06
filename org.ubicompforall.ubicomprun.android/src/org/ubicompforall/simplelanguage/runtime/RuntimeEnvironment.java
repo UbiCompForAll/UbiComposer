@@ -28,7 +28,7 @@ import java.util.Map;
 import org.ubicompforall.simplelanguage.Task;
 import org.ubicompforall.simplelanguage.UserService;
 
-public class RuntimeEnvironment implements TaskTrigger {
+public class RuntimeEnvironment implements TaskInvoker {
 	UserService userService;
 	private boolean active;
 	

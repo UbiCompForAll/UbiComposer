@@ -26,6 +26,6 @@ import java.util.Map;
 
 import org.ubicompforall.simplelanguage.Task;
 
-public interface TaskTrigger {
+public interface TaskInvoker {
 	public void invokeTask(Task task, Map<String, Object> withParameters);
 }
