@@ -24,8 +24,6 @@ package org.ubicompforall.simplelanguage.runtime;
 
 import java.util.Map;
 
-import org.ubicompforall.simplelanguage.Step;
-
 public interface StepInstance extends BuildingBlockInstance {
 
 	/**

@@ -22,7 +22,6 @@
  */
 package org.ubicompforall.simplelanguage.runtime;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.ubicompforall.simplelanguage.Step;
@@ -60,43 +59,4 @@ public abstract class AbstractStepInstance extends AbstractBuildingBlockInstance
 		return 0;
 	}
 	
-/*
-	private void createInstancePropValuesMap(Map<String, Object> parameters) {
-		if (propValues == null) {
-			propValues = new HashMap<String, Object>();
-			domainObjects = new HashMap<String, DomainObjectReference>();
-			for (PropertyAssignment prop : step.getPropertyValues()) {
-				if (prop instanceof PropertyReference) {
-					PropertyReference ref = (PropertyReference)prop;
-					Object val = parameters.get(ref.getFromObject().getName() + "." + ref.getFromProperty());
-					if (val != null)
-						propValues.put(ref.getProperty(), val);
-				} else if (prop instanceof DomainObjectAssignment) {
-					domainObjects.put(prop.getProperty(), ((DomainObjectAssignment)prop).getDomainObject();
-				}
-				else {
-					propValues.put(prop.getProperty(), prop.getValue());
-				}
-			}
-		}		
-	}
-*/	
-	
-/*
-	public Object getPropertyValue(String propertyName, Map<String, Object> parameters) {
-		if (propValues == null) {
-			createInstancePropValuesMap(parameters);
-		}	
-		return propValues.get(propertyName);
-	}
-	
-	public void setPropertyValue(String propertyName, Object value, Map<String, Object> parameters) {
-		parameters.put(step.getName() + "." + propertyName, value);
-	}
-	
-	public String getStringValue(String propertyName, Map<String, Object> parameters) {
-		return (String)getPropertyValue(propertyName, parameters);
-	}
-*/	
-
 }
