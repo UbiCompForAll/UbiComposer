@@ -40,11 +40,4 @@ public interface StepInstance extends BuildingBlockInstance {
 	 * @return Currently not in use.
 	 */
 	public int execute (TaskInstance context, Map<String, Object> parameters);
-	
-	/** This method is called at some point prior to calling execute() for the
-	 * component in order to set the step configuration (from the composition) 
-	 * which the building block will use during execute.
-	 * @param step The step information from the composition
-	 */
-	public void setStep(Step step);
 }

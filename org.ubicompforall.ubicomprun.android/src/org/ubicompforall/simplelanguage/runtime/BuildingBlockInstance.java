@@ -32,10 +32,4 @@ public interface BuildingBlockInstance {
 	 */
 	public void setBuildingBlock(BuildingBlock buildingBlock);
 
-	/**
-	 * Get the BuildingBlock from the composition for which this
-	 * BuildingBlockInstance is an instance
-	 * @return The BuildingBlock
-	 */
-	public BuildingBlock getBuildingBlock();
 }

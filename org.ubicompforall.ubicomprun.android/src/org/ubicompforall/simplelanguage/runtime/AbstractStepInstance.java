@@ -29,15 +29,7 @@ import org.ubicompforall.simplelanguage.Step;
 
 public abstract class AbstractStepInstance extends AbstractBuildingBlockInstance implements StepInstance {
 
-	Step step;
 	TaskInstance taskInstance;
-	private Map<String, Object> taskParameterMap = new HashMap<String, Object>();
-	
-	@Override
-	public void setStep(Step step) {
-		this.step = step;
-	}
-	
 	
 	/**
 	 * Override to perform the logic of the step. For each result value or
@@ -46,6 +38,9 @@ public abstract class AbstractStepInstance extends AbstractBuildingBlockInstance
 	 */
 	public abstract void execute();
 
+	public Step getStep() {
+		return (Step)getBuildingBlock();
+	}
 	
 	public TaskInstance getTaskInstance() {
 		return taskInstance;
@@ -59,10 +54,9 @@ public abstract class AbstractStepInstance extends AbstractBuildingBlockInstance
 	 */
 	public int execute(TaskInstance context, Map<String, Object> parameters) {
 		taskInstance = context;
-		taskParameterMap = parameters;
-		setupInternalPropertyMap(taskParameterMap);
+		this.resolvePropertyReferences(parameters);
 		execute();
-		updateTaskParameterMap(taskParameterMap);
+		this.updateTaskParameterMap(parameters);
 		return 0;
 	}
 	

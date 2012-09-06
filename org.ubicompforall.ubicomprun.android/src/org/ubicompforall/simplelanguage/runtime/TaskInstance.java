@@ -128,7 +128,6 @@ public class TaskInstance {
 	protected void performStep(Step step) {
 		StepInstance inst = environment.getBuildingBlockFactory().createStep(step);
 		if (inst != null) {
-			inst.setStep(step);
 			inst.execute(this, parameters);
 		}
 		else {
