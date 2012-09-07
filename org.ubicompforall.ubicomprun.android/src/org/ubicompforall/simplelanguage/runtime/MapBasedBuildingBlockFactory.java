@@ -51,6 +51,7 @@ public class MapBasedBuildingBlockFactory implements BuildingBlockFactory {
 			try {
 				BuildingBlockInstance bb = (BuildingBlockInstance)cls.newInstance();
 				bb.setBuildingBlock(buildingBlock);
+				return bb;
 			} catch (InstantiationException e) {
 				e.printStackTrace();
 			} catch (IllegalAccessException e) {
