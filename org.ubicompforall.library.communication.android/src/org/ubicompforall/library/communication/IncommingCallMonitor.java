@@ -61,7 +61,10 @@ public class IncommingCallMonitor extends BroadcastReceiver implements TriggerMo
 	public void onReceive(Context context, Intent intent) {
 		String state = intent.getStringExtra(TelephonyManager.EXTRA_STATE); 
 		 if (TelephonyManager.EXTRA_STATE_RINGING.equals(state)) { 
-			 String phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
+			 String phoneNumber = intent.getStringExtra("incoming_number");
+			 if (phoneNumber == null)
+				 phoneNumber = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
+			 
 			 helper.setPropertyValue("phoneNumber", phoneNumber);
 			 taskInvoker.invokeTask(task, helper.createTaskParameterMap());
 		 }
