@@ -26,7 +26,7 @@ import org.ubicompforall.simplelanguage.Task;
 
 public interface TriggerMonitor extends BuildingBlockInstance {
 	
-	public void startMonitoring(Task task, TaskInvoker tasktrigger);
+	public void startMonitoring(Task task, TaskInvoker taskInvoker);
 	
 	public void stopMonitoring();
 
