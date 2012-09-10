@@ -30,6 +30,8 @@ import org.ubicompforall.simplelanguage.Condition;
 import org.ubicompforall.simplelanguage.Step;
 import org.ubicompforall.simplelanguage.Trigger;
 
+import android.util.Log;
+
 public class CompositeBuildingBlockFactory implements BuildingBlockFactory {
 	protected List<BuildingBlockFactory> factories = new ArrayList<BuildingBlockFactory>();
 
@@ -48,6 +50,8 @@ public class CompositeBuildingBlockFactory implements BuildingBlockFactory {
 				return instance;
 			}			
 		}
+		Log.e("CompositeBuildingBlockFactory", "No factory found any class for a building block named "+buildingBlock.getDescriptor().getName() + 
+				". Please check the registration of your building blocks in the factories.");
 		return null;
 	}
 
