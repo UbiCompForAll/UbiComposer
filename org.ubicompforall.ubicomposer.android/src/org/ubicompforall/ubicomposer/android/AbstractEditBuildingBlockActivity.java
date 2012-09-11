@@ -364,8 +364,15 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 			theString = theString.trim();
 			return theString.equals("") ? null : theString.trim();
 	}
+
+	protected String[] trim(String[] strs) {
+		for (int i = 0; i < strs.length; i++) {
+			strs[i] = strs[i].trim();
+		}
+		return strs;
+	}
 	
-	String SPLIT_STR = "[,\\. ]";
+	String SPLIT_STR = "[,]";
 	
 	/**
 	 * Makes a query to a content provider to retrieve domain objects based
@@ -379,13 +386,13 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	protected Cursor queryForDomainObjects(DomainObjectDesc domDesc) {
 		String selArgs[] = null;
 		if (!domDesc.getSelectionArgs().equals("")) {
-			selArgs = domDesc.getSelectionArgs().split(SPLIT_STR);
+			selArgs = trim(domDesc.getSelectionArgs().split(SPLIT_STR));
 		}
 		
 		String projectionStr = stringOrNull(domDesc.getProjection());
 		String projection[] = null;
 		if ((projectionStr != null) && (!projectionStr.equals("*"))) {
-			projection = domDesc.getProjection().split(SPLIT_STR);
+			projection = trim(domDesc.getProjection().split(SPLIT_STR));
 		}
 		
 		String selection = stringOrNull(domDesc.getSelection());
