@@ -115,24 +115,24 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 
 		// Go through all the properties, and create a widget for displaying and editing each of them
 		for (Property prop : descr.getProperties()) {
-			if (prop.isIsResultValue())
-				return; // Do not create editor for result values
+			if (!prop.isIsResultValue()) { // Do not create editor for result values
 			
-			if (prop.getDataType().getName().equalsIgnoreCase("String")) {
-				createStringField(prop);
-			} else if (prop.getDataType().getName().equalsIgnoreCase("Boolean")) {
-				createBooleanField(prop);
-			} else if (prop.getDataType().getName().equalsIgnoreCase("Integer")) {
-				createIntegerField(prop);
-			} else if (prop.getDataType().getName().equalsIgnoreCase("Float")) {
-				createFloatField(prop);
-			} else if (prop.getDataType().getName().equalsIgnoreCase("Date")) {
-				createDateField(prop);
-			} else if (prop.getDataType() instanceof DomainObjectDesc) {
-				createDomainReferenceField(prop);
-			}
-			else {
-				createStringField(prop);
+				if (prop.getDataType().getName().equalsIgnoreCase("String")) {
+					createStringField(prop);
+				} else if (prop.getDataType().getName().equalsIgnoreCase("Boolean")) {
+					createBooleanField(prop);
+				} else if (prop.getDataType().getName().equalsIgnoreCase("Integer")) {
+					createIntegerField(prop);
+				} else if (prop.getDataType().getName().equalsIgnoreCase("Float")) {
+					createFloatField(prop);
+				} else if (prop.getDataType().getName().equalsIgnoreCase("Date")) {
+					createDateField(prop);
+				} else if (prop.getDataType() instanceof DomainObjectDesc) {
+					createDomainReferenceField(prop);
+				}
+				else {
+					createStringField(prop);
+				}
 			}
 		}   	
     }	
@@ -683,8 +683,19 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	private void fillBuildingBlockAndPropertyList(Property forProperty) {
 		bbPropertyList.clear();
 		String propertyType = forProperty.getDataType().getName();
-		
+
 		Task task = getTask();
+
+		// Add result values (parameters) of triggers
+		if (task.getTrigger() != null) {
+			addPropertiesOfType(task.getTrigger(), propertyType, bbPropertyList);
+/*			for (Property prop : ((TriggerDesc)(task.getTrigger().getDescriptor())).getProperties()) {
+				if (prop.isIsResultValue()  && prop.isCanBeReferedTo() && (propertyType != null) &&(propertyType.equals(prop.getDataType().getName()))) {
+					bbPropertyList.add(new BuildingBlockAndProperty(task.getTrigger(), prop));
+				}
+			}*/
+		}
+
 		// Add properties of steps before this step
 		for (Step step : task.getStepSequence()) {
 			if (buildingBlock == step)
@@ -697,14 +708,6 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 			addPropertiesOfType(info, propertyType, bbPropertyList);		
 		}
 		
-		// Add result values (parameters) of triggers
-		if (task.getTrigger() != null) {
-			for (Property prop : ((TriggerDesc)(task.getTrigger().getDescriptor())).getProperties()) {
-				if (prop.isIsResultValue()  && prop.isCanBeReferedTo() && (propertyType != null) &&(propertyType.equals(prop.getDataType().getName()))) {
-					bbPropertyList.add(new BuildingBlockAndProperty(task.getTrigger(), prop));
-				}
-			}
-		}
 	}
 	
 	protected Property getCurrentDialogProperty() {
