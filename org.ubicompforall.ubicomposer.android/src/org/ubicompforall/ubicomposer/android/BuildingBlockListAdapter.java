@@ -22,11 +22,17 @@
  */
 package org.ubicompforall.ubicomposer.android;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.ubicompforall.descriptor.Property;
 import org.ubicompforall.simplelanguage.BuildingBlock;
+import org.ubicompforall.simplelanguage.DomainObjectAssignment;
+import org.ubicompforall.simplelanguage.PropertyAssignment;
+import org.ubicompforall.simplelanguage.PropertyReference;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -63,7 +69,9 @@ public class BuildingBlockListAdapter<T> extends ArrayAdapter<T> {
 		inflater = LayoutInflater.from(context);
 	}
 	
-		
+	final static int VALIDATE_PASS = Color.BLACK;
+	final static int VALIDATE_FAIL = Color.RED;
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		ViewHolder holder;
@@ -99,11 +107,53 @@ public class BuildingBlockListAdapter<T> extends ArrayAdapter<T> {
 			
 			// Next, set the text descriptions using the holder to find the text views
 			holder.typeNameText.setText(((BuildingBlock) crItem).getDescriptor().getUserFriendlyName());
-			holder.userDefinedNameText.setText(((BuildingBlock) crItem).getName());						
+			holder.userDefinedNameText.setText(((BuildingBlock) crItem).getName());
+			if (validate((BuildingBlock) crItem)) 
+				convertView.setBackgroundColor(VALIDATE_PASS);
+			else
+				convertView.setBackgroundColor(VALIDATE_FAIL);
 		}
 		
 		return convertView;
 	}
 	
+	protected boolean validate(BuildingBlock bb) {
+		// Check that all required properties have value set
+		for (Property prop : bb.getDescriptor().getProperties()) {
+			if (prop.getLowerBound() > 0) {
+				// The property is required. Check that there is an assignment
+				PropertyAssignment assign = getPropertyOfBlock(bb, prop.getName());
+				if (assign == null)
+					return false;
+				else {
+					// If the assignment is a value assignment, check for blank string
+					if ((!(assign instanceof DomainObjectAssignment)) && (!(assign instanceof PropertyReference))) {
+						if ((assign.getValue() == null) || (assign.getValue().equals(""))) 
+							return false;
+					}
+				}
+			}
+		}
+		
+		return true;
+	}
 	
+	/**
+	 * Get the current property assignment for the specified property of a building block
+	 * @param block The building block to get a property assignment of
+	 * @param propertyName The name of the property to get the assignment of
+	 * @return The current property assignment or null if no such assignment exists
+	 */
+	public PropertyAssignment getPropertyOfBlock(BuildingBlock block, String propertyName) {
+		List<PropertyAssignment> propList = block.getPropertyValues();
+		for (Iterator<PropertyAssignment> i = propList.iterator(); i.hasNext();) {
+			PropertyAssignment propA = i.next();
+			if (propA.getProperty().equals(propertyName)) {
+				return propA;
+			}
+		}
+		return null;
+	}	
+	
+	// TODO: Consider to change representation of properties - it is very inefficient to find the assignments
 }

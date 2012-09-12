@@ -219,7 +219,8 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	
 		EditText editText = new EditText(this);
 		editText.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		editText.setHint(prop.getDescription());
+		String reqPrefix = (prop.getLowerBound() > 0) ? "* " : ""; // Mark required field with *
+		editText.setHint(reqPrefix + prop.getDescription());
 		editText.setInputType(inputType);
 		
 		ImageButton button = new ImageButton(this);

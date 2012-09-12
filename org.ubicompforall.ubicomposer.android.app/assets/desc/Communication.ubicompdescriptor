@@ -14,22 +14,22 @@
     </properties>
   </buildingBlocks>
   <buildingBlocks xsi:type="descriptor:StepDesc" name="SendSMS" userFriendlyName="Send SMS" description="Send an SMS message" iconUrl="technorati.png">
-    <properties name="phoneNumber" userFriendlyName="Phone Number" description="Phone number to send the SMS message to">
+    <properties name="phoneNumber" userFriendlyName="Phone Number" description="Phone number to send the SMS message to" lowerBound="1" upperBound="1">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
     </properties>
-    <properties name="message" userFriendlyName="Message" description="The text message to send as SMS">
+    <properties name="message" userFriendlyName="Message" description="The text message to send as SMS" lowerBound="1" upperBound="1">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
     </properties>
     <properties name="contact" userFriendlyName="contact" description="The contact to send the message to" dataType="//@buildingBlocks.5" upperBound="1"/>
   </buildingBlocks>
   <buildingBlocks xsi:type="descriptor:StepDesc" name="sendMail" userFriendlyName="Send Mail" description="Send a mail message" iconUrl="email_go.png">
-    <properties name="mailAddress" userFriendlyName="Mail Address" description="The address to send the mail to">
+    <properties name="mailAddress" userFriendlyName="Mail Address" description="The address to send the mail to" lowerBound="1" upperBound="1">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
     </properties>
-    <properties name="subject" userFriendlyName="Subject" description="The title subject of the message">
+    <properties name="subject" userFriendlyName="Subject" description="The title subject of the message" upperBound="1">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
     </properties>
-    <properties name="message" userFriendlyName="Message" description="The text message to send as mail">
+    <properties name="message" userFriendlyName="Message" description="The text message to send as mail" lowerBound="1" upperBound="1">
       <dataType xsi:type="descriptor:DataType" href="BasicTypes.ubicompdescriptor#//@buildingBlocks.1"/>
     </properties>
   </buildingBlocks>
