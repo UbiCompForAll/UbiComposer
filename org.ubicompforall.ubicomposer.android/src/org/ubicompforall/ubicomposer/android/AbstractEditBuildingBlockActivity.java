@@ -212,15 +212,15 @@ public abstract class AbstractEditBuildingBlockActivity extends AbstractUbiCompo
 	 * @param inputType An input type as specified in android.text.InputType 
 	 */
 	protected void createStringField(final Property prop, int inputType) {
+		String reqPrefix = (prop.getLowerBound() > 0) ? "* " : ""; // Mark required field with *
 		TextView fieldNameLabel = new TextView(this);
 		fieldNameLabel.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		fieldNameLabel.setText(prop.getUserFriendlyName());
+		fieldNameLabel.setText(reqPrefix + prop.getUserFriendlyName());
 		buildingBlockView.addView(fieldNameLabel);
 	
 		EditText editText = new EditText(this);
 		editText.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT));
-		String reqPrefix = (prop.getLowerBound() > 0) ? "* " : ""; // Mark required field with *
-		editText.setHint(reqPrefix + prop.getDescription());
+		editText.setHint(prop.getDescription());
 		editText.setInputType(inputType);
 		
 		ImageButton button = new ImageButton(this);
